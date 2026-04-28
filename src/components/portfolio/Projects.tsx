@@ -1,4 +1,4 @@
-import { Lock, Sparkles } from "lucide-react";
+import { Lock, Sparkles, ExternalLink } from "lucide-react";
 
 export function Projects() {
   return (
@@ -41,19 +41,45 @@ export function Projects() {
           </div>
         </div>
 
-        {/* Placeholders */}
+        {/* Project cards */}
         <div className="grid md:grid-cols-2 gap-6">
-          {[1, 2].map((n) => (
-            <div key={n} className="reveal aspect-[4/3] rounded-2xl bg-card border border-border border-dashed grid place-items-center text-center p-8 hover:border-primary/40 transition-colors">
-              <div>
-                <div className="w-14 h-14 rounded-xl bg-primary/10 grid place-items-center mx-auto mb-4">
-                  <Sparkles className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="text-xl font-bold">Próximo projeto</h4>
-                <p className="text-sm text-muted-foreground mt-2">O seu pode ser o próximo aqui.</p>
+          <div className="reveal rounded-2xl bg-card border border-border p-6 lg:p-8 hover:border-primary/40 transition-colors flex flex-col">
+            <div className="flex-1 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
+                <Sparkles className="w-3 h-3" /> Ao vivo
+              </div>
+              <h4 className="text-2xl font-bold">Barbearia Dom — Rio de Janeiro</h4>
+              <p className="text-muted-foreground leading-relaxed">
+                Landing page premium com identidade visual exclusiva, cardápio de serviços com preços, portfólio de trabalhos e agendamento direto pelo WhatsApp.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["Landing Page", "Dark Theme", "WhatsApp", "Mobile Ready"].map((t) => (
+                  <span key={t} className="px-3 py-1 rounded-full bg-surface border border-border text-xs font-medium text-muted-foreground">
+                    {t}
+                  </span>
+                ))}
               </div>
             </div>
-          ))}
+            <a
+              href="https://dom-dom-rio.lovable.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity"
+            >
+              Ver projeto ao vivo
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </div>
+
+          <div className="reveal aspect-[4/3] md:aspect-auto rounded-2xl bg-card border border-border border-dashed grid place-items-center text-center p-8 hover:border-primary/40 transition-colors">
+            <div>
+              <div className="w-14 h-14 rounded-xl bg-primary/10 grid place-items-center mx-auto mb-4">
+                <Sparkles className="w-6 h-6 text-primary" />
+              </div>
+              <h4 className="text-xl font-bold">Próximo projeto</h4>
+              <p className="text-sm text-muted-foreground mt-2">O seu pode ser o próximo aqui.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
