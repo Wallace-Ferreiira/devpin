@@ -1,7 +1,4 @@
-import { ArrowUpRight, Sparkles } from "lucide-react";
-import rotapin from "@/assets/project-rotapin.jpg";
-
-const tags = ["React", "Supabase", "Mapbox", "PWA"];
+import { Lock, Sparkles } from "lucide-react";
 
 export function Projects() {
   return (
@@ -14,28 +11,33 @@ export function Projects() {
           </h2>
         </div>
 
-        {/* Featured */}
+        {/* Featured - Locked / Coming Soon */}
         <div className="reveal grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12 p-6 lg:p-10 rounded-3xl bg-card border border-border hover:border-primary/40 transition-colors">
-          <div className="relative rounded-2xl overflow-hidden shadow-card group">
-            <img src={rotapin} alt="RotaPin app" loading="lazy" width={1024} height={768} className="w-full h-auto group-hover:scale-105 transition-transform duration-700" />
+          <div className="relative rounded-2xl overflow-hidden shadow-card aspect-[4/3] bg-surface grid place-items-center">
+            <div className="absolute inset-0" style={{ background: "var(--gradient-radial)" }} />
+            <div className="relative text-center p-8">
+              <div className="w-20 h-20 rounded-2xl bg-primary/10 grid place-items-center mx-auto mb-4 ring-1 ring-primary/30">
+                <Lock className="w-9 h-9 text-primary" />
+              </div>
+              <p className="text-sm text-muted-foreground">Conteúdo em sigilo</p>
+            </div>
             <div className="absolute top-4 left-4 px-3 py-1 rounded-full glass text-xs font-semibold inline-flex items-center gap-1">
-              <Sparkles className="w-3 h-3 text-primary" /> Em produção
+              <Sparkles className="w-3 h-3 text-primary" /> Em breve
             </div>
           </div>
           <div className="space-y-5">
-            <h3 className="text-3xl lg:text-4xl font-bold">RotaPin</h3>
+            <h3 className="text-3xl lg:text-4xl font-bold">Projeto em desenvolvimento 🔒</h3>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              App de gestão de rotas para entregadores da Shopee. Otimização inteligente de rotas, mapas em tempo real e interface focada em produtividade.
+              Em breve — sistema completo sendo finalizado.
             </p>
-            <div className="flex flex-wrap gap-2">
-              {tags.map((t) => (
-                <span key={t} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">{t}</span>
-              ))}
-            </div>
-            <a href="#contato" className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-primary text-primary-foreground font-semibold shadow-glow hover:scale-105 transition-transform">
-              Ver projeto
-              <ArrowUpRight className="w-4 h-4 group-hover:rotate-45 transition-transform" />
-            </a>
+            <button
+              type="button"
+              disabled
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-surface text-muted-foreground font-semibold border border-border cursor-not-allowed opacity-70"
+            >
+              <Lock className="w-4 h-4" />
+              Lançamento em breve
+            </button>
           </div>
         </div>
 
