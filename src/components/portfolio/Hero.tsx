@@ -30,17 +30,15 @@ export function Hero() {
             className="font-bold tracking-tight leading-[0.95] text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem]"
             style={{ animation: "fade-up 0.8s ease-out 0.1s both" }}
           >
-            Eu construo{" "}
-            <span className="text-gradient">sistemas</span>{" "}
-            que fazem seu negócio{" "}
-            <span className="text-gradient">crescer</span>
+            Transformo <span className="text-gradient">ideias</span> em{" "}
+            <span className="text-gradient">sistemas</span> que vendem.
           </h1>
 
           <p
             className="text-lg lg:text-xl text-muted-foreground max-w-xl leading-relaxed"
             style={{ animation: "fade-up 0.8s ease-out 0.2s both" }}
           >
-            Landing pages, sites completos e sistemas personalizados — do zero ao ar em tempo recorde.
+            Soluções digitais modernas para quem quer sair na frente.
           </p>
 
           <div
