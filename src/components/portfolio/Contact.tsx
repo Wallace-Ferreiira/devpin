@@ -34,9 +34,9 @@ export function Contact() {
         </a>
 
         <div className="mt-8">
-          <a href="mailto:contato@devpin.com.br" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+          <a href="mailto:wallacestar77@gmail.com" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
             <Mail className="w-4 h-4" />
-            contato@devpin.com.br
+            wallacestar77@gmail.com
           </a>
         </div>
       </div>
