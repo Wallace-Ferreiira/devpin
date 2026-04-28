@@ -66,7 +66,7 @@ export function About() {
             Quem está por trás dos <span className="text-gradient">projetos</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Sou Wallace, desenvolvedor de sistemas web baseado em Nova Iguaçu, RJ. Comecei criando o RotaPin — um app real usado por entregadores da Shopee — e hoje transformo ideias em produtos digitais funcionais. Não entrego só código: entrego soluções que resolvem problemas reais.
+            Sou Wallace, desenvolvedor de sistemas web baseado em Nova Iguaçu, RJ. Transformo ideias em produtos digitais funcionais — não entrego só código, entrego soluções que resolvem problemas reais.
           </p>
 
           <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border">
