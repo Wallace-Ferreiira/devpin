@@ -45,8 +45,17 @@ export function About() {
         <div className="lg:col-span-2 reveal flex justify-center">
           <div className="relative">
             <div className="absolute -inset-3 rounded-full bg-gradient-primary opacity-60 blur-2xl" />
-            <div className="relative w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden ring-4 ring-primary shadow-glow">
-              <img src={avatar} alt="Wallace - desenvolvedor" loading="lazy" width={768} height={768} className="w-full h-full object-cover" />
+            <div className="relative w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden ring-4 ring-primary shadow-glow" style={{ borderStyle: "dashed" }}>
+              {/* REPLACE src with your photo URL */}
+              <img
+                id="profile-photo"
+                src={avatar}
+                alt="Wallace Ferreira"
+                loading="lazy"
+                width={768}
+                height={768}
+                className="w-full h-full object-cover rounded-full border-4 border-dashed border-primary"
+              />
             </div>
           </div>
         </div>
