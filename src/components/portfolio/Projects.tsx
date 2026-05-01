@@ -1,6 +1,15 @@
-import { Lock, Sparkles, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { Lock, Sparkles, ExternalLink, X } from "lucide-react";
+
+const barbeariaShots = [
+  "https://i.imgur.com/6zWuGWv.png",
+  "https://i.imgur.com/mD6aY9L.png",
+  "https://i.imgur.com/DKI8dNj.png",
+  "https://i.imgur.com/H39YP3t.png",
+];
 
 export function Projects() {
+  const [lightbox, setLightbox] = useState<string | null>(null);
   return (
     <section id="projetos" className="py-24 lg:py-32 relative">
       <div className="container mx-auto px-6">
@@ -59,6 +68,26 @@ export function Projects() {
                   </span>
                 ))}
               </div>
+
+              {/* Preview gallery */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                {barbeariaShots.map((src, i) => (
+                  <button
+                    key={src}
+                    type="button"
+                    onClick={() => setLightbox(src)}
+                    className="group relative aspect-[4/3] rounded-lg overflow-hidden border border-border hover:border-primary/60 transition-all hover:scale-[1.03] bg-surface"
+                    aria-label={`Abrir screenshot ${i + 1}`}
+                  >
+                    <img
+                      src={src}
+                      alt={`Barbearia Dom — preview ${i + 1}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover object-top group-hover:opacity-90 transition-opacity"
+                    />
+                  </button>
+                ))}
+              </div>
             </div>
             <a
               href="https://dom-dom-rio.lovable.app"
@@ -82,6 +111,30 @@ export function Projects() {
           </div>
         </div>
       </div>
+
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm grid place-items-center p-4"
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            onClick={() => setLightbox(null)}
+            className="absolute top-4 right-4 w-11 h-11 rounded-full bg-surface/80 border border-border grid place-items-center hover:bg-surface transition-colors"
+            aria-label="Fechar"
+          >
+            <X className="w-5 h-5" />
+          </button>
+          <img
+            src={lightbox}
+            alt="Preview ampliado"
+            className="max-w-full max-h-[90vh] rounded-xl shadow-2xl object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </section>
   );
 }
