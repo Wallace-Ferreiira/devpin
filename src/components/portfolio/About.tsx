@@ -47,7 +47,7 @@ export function About() {
             {/* REPLACE src with your photo URL */}
             <img
               id="profile-photo"
-              src="https://imgur.com/a/WgVayYT"
+              src="https://imgur.com/kVYlGyY"
               alt="Wallace Ferreira"
               loading="lazy"
               width={768}
