@@ -1,140 +1,211 @@
-import { useState } from "react";
-import { Lock, Sparkles, ExternalLink, X } from "lucide-react";
+import { Sparkles, ExternalLink, ImageIcon } from "lucide-react";
 
-const barbeariaShots = [
-  "https://i.imgur.com/6zWuGWv.png",
-  "https://i.imgur.com/mD6aY9L.png",
-  "https://i.imgur.com/DKI8dNj.png",
-  "https://i.imgur.com/H39YP3t.png",
+type Project = {
+  emoji: string;
+  niche: string;
+  bannerFrom: string;
+  bannerTo: string;
+  title: string;
+  description: string;
+  tags: [string, string, string];
+  link: string;
+  active: boolean;
+};
+
+const projects: Project[] = [
+  {
+    emoji: "💈",
+    niche: "Barbearia",
+    bannerFrom: "#f59e0b",
+    bannerTo: "#b45309",
+    title: "Barbearia Dom — Rio de Janeiro",
+    description: "Landing page premium com agendamento via WhatsApp e portfólio de cortes.",
+    tags: ["Dark Theme", "WhatsApp", "Mobile Ready"],
+    link: "https://dom-dom-rio.lovable.app",
+    active: true,
+  },
+  {
+    emoji: "🍔",
+    niche: "Hamburgueria",
+    bannerFrom: "#ef4444",
+    bannerTo: "#7f1d1d",
+    title: "Hamburgueria",
+    description: "Cardápio digital com delivery pelo WhatsApp e seção de combos.",
+    tags: ["Dark Theme", "Cardápio", "Delivery"],
+    link: "#",
+    active: false,
+  },
+  {
+    emoji: "⚖️",
+    niche: "Advocacia",
+    bannerFrom: "#1e3a8a",
+    bannerTo: "#0f172a",
+    title: "Escritório de Advocacia",
+    description: "Landing page de alta conversão para captação de clientes via WhatsApp e Google Ads.",
+    tags: ["Profissional", "Mobile First", "WhatsApp"],
+    link: "#",
+    active: false,
+  },
+  {
+    emoji: "💅",
+    niche: "Salão de Beleza",
+    bannerFrom: "#ec4899",
+    bannerTo: "#831843",
+    title: "Salão de Beleza",
+    description: "Página com agendamento online, serviços e galeria de trabalhos.",
+    tags: ["Feminino", "Agendamento", "Portfólio"],
+    link: "#",
+    active: false,
+  },
+  {
+    emoji: "💪",
+    niche: "Personal Trainer",
+    bannerFrom: "#22c55e",
+    bannerTo: "#14532d",
+    title: "Personal Trainer",
+    description: "Landing page focada em captação de alunos com planos e depoimentos.",
+    tags: ["Fitness", "WhatsApp", "Conversão"],
+    link: "#",
+    active: false,
+  },
+  {
+    emoji: "🐶",
+    niche: "Pet Shop",
+    bannerFrom: "#06b6d4",
+    bannerTo: "#155e75",
+    title: "Pet Shop / Banho e Tosa",
+    description: "Site com agendamento de banho e tosa e cardápio de serviços.",
+    tags: ["Pet", "Agendamento", "Fofo"],
+    link: "#",
+    active: false,
+  },
+  {
+    emoji: "🏠",
+    niche: "Imóveis",
+    bannerFrom: "#0ea5e9",
+    bannerTo: "#0c4a6e",
+    title: "Corretor de Imóveis",
+    description: "Página de captação de leads para venda e locação de imóveis.",
+    tags: ["Imóveis", "Leads", "WhatsApp"],
+    link: "#",
+    active: false,
+  },
+  {
+    emoji: "🔧",
+    niche: "Mecânica",
+    bannerFrom: "#64748b",
+    bannerTo: "#1e293b",
+    title: "Mecânica / Autopeças",
+    description: "Landing page com serviços, localização e orçamento via WhatsApp.",
+    tags: ["Automotivo", "WhatsApp", "Local"],
+    link: "#",
+    active: false,
+  },
+  {
+    emoji: "📚",
+    niche: "Educação",
+    bannerFrom: "#8b5cf6",
+    bannerTo: "#4c1d95",
+    title: "Professor Particular",
+    description: "Página de captação de alunos com áreas de ensino e depoimentos.",
+    tags: ["Educação", "Online", "WhatsApp"],
+    link: "#",
+    active: false,
+  },
+  {
+    emoji: "🧽",
+    niche: "Limpeza",
+    bannerFrom: "#14b8a6",
+    bannerTo: "#134e4a",
+    title: "Limpeza Residencial",
+    description: "Landing page com pacotes de serviços e agendamento fácil.",
+    tags: ["Serviços", "Confiança", "WhatsApp"],
+    link: "#",
+    active: false,
+  },
 ];
 
 export function Projects() {
-  const [lightbox, setLightbox] = useState<string | null>(null);
   return (
     <section id="projetos" className="py-24 lg:py-32 relative">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-16 reveal">
           <span className="text-sm font-semibold text-primary uppercase tracking-wider">Portfólio</span>
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mt-3">
-            Projetos reais, <span className="text-gradient">resultados reais</span>
+            Projetos — <span className="text-gradient">Cada nicho, uma solução.</span>
           </h2>
+          <p className="text-muted-foreground mt-4 text-lg">
+            Clique em qualquer projeto para ver ao vivo.
+          </p>
         </div>
 
-        {/* Featured - Locked / Coming Soon */}
-        <div className="reveal grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12 p-6 lg:p-10 rounded-3xl bg-card border border-border hover:border-primary/40 transition-colors">
-          <div className="relative rounded-2xl overflow-hidden shadow-card aspect-[4/3] bg-surface grid place-items-center">
-            <div className="absolute inset-0" style={{ background: "var(--gradient-radial)" }} />
-            <div className="relative text-center p-8">
-              <div className="w-20 h-20 rounded-2xl bg-primary/10 grid place-items-center mx-auto mb-4 ring-1 ring-primary/30">
-                <Lock className="w-9 h-9 text-primary" />
-              </div>
-              <p className="text-sm text-muted-foreground">Conteúdo em sigilo</p>
-            </div>
-            <div className="absolute top-4 left-4 px-3 py-1 rounded-full glass text-xs font-semibold inline-flex items-center gap-1">
-              <Sparkles className="w-3 h-3 text-primary" /> Em breve
-            </div>
-          </div>
-          <div className="space-y-5">
-            <h3 className="text-3xl lg:text-4xl font-bold">Projeto em desenvolvimento 🔒</h3>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              Em breve — sistema completo sendo finalizado.
-            </p>
-            <button
-              type="button"
-              disabled
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-surface text-muted-foreground font-semibold border border-border cursor-not-allowed opacity-70"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((p) => (
+            <article
+              key={p.title}
+              className="reveal group relative rounded-2xl bg-card border border-border overflow-hidden flex flex-col transition-all duration-300 hover:border-primary/60 hover:-translate-y-1 hover:shadow-[0_0_40px_-8px_var(--primary)]"
             >
-              <Lock className="w-4 h-4" />
-              Lançamento em breve
-            </button>
-          </div>
-        </div>
-
-        {/* Project cards */}
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="reveal rounded-2xl bg-card border border-border p-6 lg:p-8 hover:border-primary/40 transition-colors flex flex-col">
-            <div className="flex-1 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                <Sparkles className="w-3 h-3" /> Ao vivo
-              </div>
-              <h4 className="text-2xl font-bold">Barbearia Dom — Rio de Janeiro</h4>
-              <p className="text-muted-foreground leading-relaxed">
-                Landing page premium com identidade visual exclusiva, cardápio de serviços com preços, portfólio de trabalhos e agendamento direto pelo WhatsApp.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {["Landing Page", "Dark Theme", "WhatsApp", "Mobile Ready"].map((t) => (
-                  <span key={t} className="px-3 py-1 rounded-full bg-surface border border-border text-xs font-medium text-muted-foreground">
-                    {t}
-                  </span>
-                ))}
+              {/* Banner */}
+              <div
+                className="relative h-24 flex items-center justify-between px-5"
+                style={{ background: `linear-gradient(135deg, ${p.bannerFrom}, ${p.bannerTo})` }}
+              >
+                <span className="text-4xl drop-shadow-md" aria-hidden>{p.emoji}</span>
+                <span className="text-sm font-bold text-white/95 uppercase tracking-wider">
+                  {p.niche}
+                </span>
               </div>
 
-              {/* Preview gallery */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                {barbeariaShots.map((src, i) => (
-                  <button
-                    key={src}
-                    type="button"
-                    onClick={() => setLightbox(src)}
-                    className="group relative aspect-[4/3] rounded-lg overflow-hidden border border-border hover:border-primary/60 transition-all hover:scale-[1.03] bg-surface"
-                    aria-label={`Abrir screenshot ${i + 1}`}
+              <div className="flex-1 flex flex-col p-6 space-y-4">
+                <h3 className="text-xl font-bold leading-tight">{p.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                  {p.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="px-2.5 py-1 rounded-full bg-surface border border-border text-xs font-medium text-muted-foreground"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Screenshot placeholder */}
+                <div className="aspect-[16/10] rounded-lg bg-surface border border-dashed border-border grid place-items-center text-center px-4">
+                  <div className="flex flex-col items-center gap-2 text-muted-foreground">
+                    <ImageIcon className="w-6 h-6" />
+                    <span className="text-xs font-medium">Clique para ver prints</span>
+                  </div>
+                </div>
+
+                {p.active ? (
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity"
                   >
-                    <img
-                      src={src}
-                      alt={`Barbearia Dom — preview ${i + 1}`}
-                      loading="lazy"
-                      className="w-full h-full object-cover object-top group-hover:opacity-90 transition-opacity"
-                    />
+                    Ver projeto
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    disabled
+                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-surface text-muted-foreground font-semibold border border-border cursor-not-allowed opacity-70"
+                  >
+                    <Sparkles className="w-4 h-4" />
+                    Em breve
                   </button>
-                ))}
+                )}
               </div>
-            </div>
-            <a
-              href="https://dom-dom-rio.lovable.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity"
-            >
-              Ver projeto ao vivo
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          </div>
-
-          <div className="reveal aspect-[4/3] md:aspect-auto rounded-2xl bg-card border border-border border-dashed grid place-items-center text-center p-8 hover:border-primary/40 transition-colors">
-            <div>
-              <div className="w-14 h-14 rounded-xl bg-primary/10 grid place-items-center mx-auto mb-4">
-                <Sparkles className="w-6 h-6 text-primary" />
-              </div>
-              <h4 className="text-xl font-bold">Próximo projeto</h4>
-              <p className="text-sm text-muted-foreground mt-2">O seu pode ser o próximo aqui.</p>
-            </div>
-          </div>
+            </article>
+          ))}
         </div>
       </div>
-
-      {lightbox && (
-        <div
-          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm grid place-items-center p-4"
-          onClick={() => setLightbox(null)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <button
-            type="button"
-            onClick={() => setLightbox(null)}
-            className="absolute top-4 right-4 w-11 h-11 rounded-full bg-surface/80 border border-border grid place-items-center hover:bg-surface transition-colors"
-            aria-label="Fechar"
-          >
-            <X className="w-5 h-5" />
-          </button>
-          <img
-            src={lightbox}
-            alt="Preview ampliado"
-            className="max-w-full max-h-[90vh] rounded-xl shadow-2xl object-contain"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
-      )}
     </section>
   );
 }
