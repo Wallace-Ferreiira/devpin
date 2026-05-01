@@ -12,10 +12,10 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "DevPin — Wallace · Desenvolvedor Web em Nova Iguaçu, RJ" },
-      { name: "description", content: "Sites, landing pages e sistemas personalizados feitos sob medida. Do zero ao ar em tempo recorde." },
-      { property: "og:title", content: "DevPin — Sistemas que fazem seu negócio crescer" },
-      { property: "og:description", content: "Landing pages, sites completos e sistemas web profissionais." },
+      { title: "DevPin — Transformo ideias em sistemas que vendem" },
+      { name: "description", content: "Landing pages, sites completos e sistemas personalizados para o seu negócio. Solicite um orçamento pelo WhatsApp!" },
+      { property: "og:title", content: "DevPin — Transformo ideias em sistemas que vendem" },
+      { property: "og:description", content: "Landing pages, sites completos e sistemas personalizados para o seu negócio. Solicite um orçamento pelo WhatsApp!" },
     ],
   }),
 });
