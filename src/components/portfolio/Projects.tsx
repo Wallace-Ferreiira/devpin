@@ -1,6 +1,15 @@
-import { Lock, Sparkles, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { Lock, Sparkles, ExternalLink, X } from "lucide-react";
+
+const barbeariaShots = [
+  "https://i.imgur.com/6zWuGWv.png",
+  "https://i.imgur.com/mD6aY9L.png",
+  "https://i.imgur.com/DKI8dNj.png",
+  "https://i.imgur.com/H39YP3t.png",
+];
 
 export function Projects() {
+  const [lightbox, setLightbox] = useState<string | null>(null);
   return (
     <section id="projetos" className="py-24 lg:py-32 relative">
       <div className="container mx-auto px-6">
