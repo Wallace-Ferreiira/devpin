@@ -68,6 +68,26 @@ export function Projects() {
                   </span>
                 ))}
               </div>
+
+              {/* Preview gallery */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                {barbeariaShots.map((src, i) => (
+                  <button
+                    key={src}
+                    type="button"
+                    onClick={() => setLightbox(src)}
+                    className="group relative aspect-[4/3] rounded-lg overflow-hidden border border-border hover:border-primary/60 transition-all hover:scale-[1.03] bg-surface"
+                    aria-label={`Abrir screenshot ${i + 1}`}
+                  >
+                    <img
+                      src={src}
+                      alt={`Barbearia Dom — preview ${i + 1}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover object-top group-hover:opacity-90 transition-opacity"
+                    />
+                  </button>
+                ))}
+              </div>
             </div>
             <a
               href="https://dom-dom-rio.lovable.app"
