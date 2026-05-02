@@ -43,7 +43,15 @@ export function About() {
     <section id="sobre" className="py-24 lg:py-32 relative">
       <div className="container mx-auto px-6 grid lg:grid-cols-5 gap-12 items-center">
         <div className="lg:col-span-2 reveal flex justify-center">
-          <div className="relative w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden">
+          <div
+            className="relative w-[280px] h-[280px] lg:w-80 lg:h-80 rounded-full overflow-hidden"
+            style={{
+              border: "2px solid #f59e0b",
+              borderRadius: "50%",
+              boxShadow:
+                "0 0 20px #f59e0b, 0 0 40px #f59e0b80, 0 0 80px #f59e0b40",
+            }}
+          >
             {/* REPLACE src with your photo URL */}
             <img
               id="profile-photo"
