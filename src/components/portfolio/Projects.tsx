@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Sparkles, ExternalLink, ImageIcon } from "lucide-react";
 
 type Project = {
@@ -9,6 +10,7 @@ type Project = {
   link: string;
   active: boolean;
   preview?: string;
+  images?: string[];
 };
 
 const projects: Project[] = [
@@ -21,6 +23,7 @@ const projects: Project[] = [
     link: "https://dom-dom-rio.lovable.app",
     active: true,
     preview: "https://dom-dom-rio.lovable.app",
+    images: [],
   },
   {
     emoji: "🍔",
@@ -30,6 +33,7 @@ const projects: Project[] = [
     tags: ["Dark Theme", "Cardápio", "Delivery"],
     link: "#",
     active: false,
+    images: [],
   },
   {
     emoji: "⚖️",
@@ -39,6 +43,7 @@ const projects: Project[] = [
     tags: ["Profissional", "Mobile First", "WhatsApp"],
     link: "#",
     active: false,
+    images: [],
   },
   {
     emoji: "💅",
@@ -48,6 +53,7 @@ const projects: Project[] = [
     tags: ["Feminino", "Agendamento", "Portfólio"],
     link: "#",
     active: false,
+    images: [],
   },
   {
     emoji: "💪",
@@ -57,6 +63,13 @@ const projects: Project[] = [
     tags: ["Fitness", "WhatsApp", "Conversão"],
     link: "#",
     active: false,
+    images: [
+      "https://i.imgur.com/FndZLFq.png",
+      "https://i.imgur.com/uqeevYy.png",
+      "https://i.imgur.com/REJYv9U.png",
+      "https://i.imgur.com/BO2p2gC.png",
+      "https://i.imgur.com/KGGZ4YN.png",
+    ],
   },
   {
     emoji: "🐶",
@@ -66,6 +79,7 @@ const projects: Project[] = [
     tags: ["Pet", "Agendamento", "Fofo"],
     link: "#",
     active: false,
+    images: [],
   },
   {
     emoji: "🏠",
@@ -75,6 +89,7 @@ const projects: Project[] = [
     tags: ["Imóveis", "Leads", "WhatsApp"],
     link: "#",
     active: false,
+    images: [],
   },
   {
     emoji: "🔧",
@@ -84,6 +99,7 @@ const projects: Project[] = [
     tags: ["Automotivo", "WhatsApp", "Local"],
     link: "#",
     active: false,
+    images: [],
   },
   {
     emoji: "📚",
@@ -93,6 +109,7 @@ const projects: Project[] = [
     tags: ["Educação", "Online", "WhatsApp"],
     link: "#",
     active: false,
+    images: [],
   },
   {
     emoji: "🧽",
@@ -102,12 +119,95 @@ const projects: Project[] = [
     tags: ["Serviços", "Confiança", "WhatsApp"],
     link: "#",
     active: false,
+    images: [],
   },
 ];
+
+function HoverCarousel({ images, title }: { images: string[]; title: string }) {
+  const [index, setIndex] = useState(0);
+  const [hovering, setHovering] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    if (hovering && images.length > 1) {
+      intervalRef.current = setInterval(() => {
+        setIndex((i) => (i + 1) % images.length);
+      }, 800);
+    }
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [hovering, images.length]);
+
+  const hasImages = images.length > 0;
+
+  return (
+    <div
+      data-images={JSON.stringify(images)}
+      onMouseEnter={() => setHovering(true)}
+      onMouseLeave={() => {
+        setHovering(false);
+        setIndex(0);
+      }}
+      className="relative aspect-[16/10] rounded-lg overflow-hidden"
+      style={{ backgroundColor: "#0a0a0a", border: "1px solid #2a2a2a" }}
+    >
+      {hasImages ? (
+        <>
+          {images.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              alt={`${title} - ${i + 1}`}
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+              style={{ opacity: i === index ? 1 : 0 }}
+            />
+          ))}
+          {images.length > 1 && (
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+              {images.map((_, i) => (
+                <span
+                  key={i}
+                  className="w-1.5 h-1.5 rounded-full transition-all"
+                  style={{
+                    backgroundColor: i === index ? "#f59e0b" : "rgba(255,255,255,0.3)",
+                    width: i === index ? "16px" : "6px",
+                  }}
+                />
+              ))}
+            </div>
+          )}
+        </>
+      ) : (
+        <div
+          className="absolute inset-0 grid place-items-center"
+          style={{
+            background:
+              "linear-gradient(110deg, #0a0a0a 30%, #1a1a1a 50%, #0a0a0a 70%)",
+            backgroundSize: "200% 100%",
+            animation: "shimmer 2.5s ease-in-out infinite",
+          }}
+        >
+          <div className="flex flex-col items-center gap-2" style={{ color: "#52525b" }}>
+            <ImageIcon className="w-6 h-6" />
+            <span className="text-xs font-medium">Em breve</span>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function Projects() {
   return (
     <section id="projetos" className="py-24 lg:py-32 relative">
+      <style>{`
+        @keyframes shimmer {
+          0% { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
+        }
+      `}</style>
       <div className="container mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-16 reveal">
           <span className="text-sm font-semibold text-primary uppercase tracking-wider">Portfólio</span>
@@ -115,7 +215,7 @@ export function Projects() {
             Projetos — <span className="text-gradient">Cada nicho, uma solução.</span>
           </h2>
           <p className="text-muted-foreground mt-4 text-lg">
-            Clique em qualquer projeto para ver ao vivo.
+            Passe o mouse para ver as prévias.
           </p>
         </div>
 
@@ -123,6 +223,7 @@ export function Projects() {
           {projects.map((p) => (
             <article
               key={p.title}
+              data-images={JSON.stringify(p.images ?? [])}
               className="reveal group relative rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1"
               style={{
                 backgroundColor: "#111111",
@@ -137,7 +238,6 @@ export function Projects() {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              {/* AO VIVO badge */}
               {p.active && (
                 <span
                   className="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase"
@@ -151,7 +251,6 @@ export function Projects() {
                 </span>
               )}
 
-              {/* Banner */}
               <div
                 className="relative h-24 flex items-center justify-between px-5"
                 style={{ backgroundColor: "#1a1a1a", borderBottom: "1px solid #2a2a2a" }}
@@ -180,34 +279,7 @@ export function Projects() {
                   ))}
                 </div>
 
-                {/* Screenshot placeholder / preview */}
-                {p.active && p.preview ? (
-                  <a
-                    href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block aspect-[16/10] rounded-lg overflow-hidden border"
-                    style={{ borderColor: "#2a2a2a" }}
-                  >
-                    <iframe
-                      src={p.preview}
-                      title={p.title}
-                      loading="lazy"
-                      className="w-full h-full pointer-events-none"
-                      style={{ border: 0, transform: "scale(0.5)", transformOrigin: "top left", width: "200%", height: "200%" }}
-                    />
-                  </a>
-                ) : (
-                  <div
-                    className="aspect-[16/10] rounded-lg grid place-items-center text-center px-4"
-                    style={{ backgroundColor: "#0a0a0a", border: "1px dashed #2a2a2a" }}
-                  >
-                    <div className="flex flex-col items-center gap-2" style={{ color: "#71717a" }}>
-                      <ImageIcon className="w-6 h-6" />
-                      <span className="text-xs font-medium">Clique para ver prints</span>
-                    </div>
-                  </div>
-                )}
+                <HoverCarousel images={p.images ?? []} title={p.title} />
 
                 {p.active ? (
                   <a
