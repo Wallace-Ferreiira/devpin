@@ -23,7 +23,12 @@ const projects: Project[] = [
     link: "https://dom-dom-rio.lovable.app",
     active: true,
     preview: "https://dom-dom-rio.lovable.app",
-    images: [],
+    images: [
+      "https://i.imgur.com/fm80upu.png",
+      "https://i.imgur.com/Ptowj5z.png",
+      "https://i.imgur.com/t0wtnu8.png",
+      "https://i.imgur.com/hfW3lfA.png",
+    ],
   },
   {
     emoji: "🍔",
@@ -61,8 +66,8 @@ const projects: Project[] = [
     title: "Personal Trainer",
     description: "Landing page focada em captação de alunos com planos e depoimentos.",
     tags: ["Fitness", "WhatsApp", "Conversão"],
-    link: "#",
-    active: false,
+    link: "https://rafael-costa-rio-energetic-launch.lovable.app",
+    active: true,
     images: [
       "https://i.imgur.com/FndZLFq.png",
       "https://i.imgur.com/uqeevYy.png",
@@ -132,7 +137,7 @@ function HoverCarousel({ images, title }: { images: string[]; title: string }) {
     if (hovering && images.length > 1) {
       intervalRef.current = setInterval(() => {
         setIndex((i) => (i + 1) % images.length);
-      }, 800);
+      }, 2000);
     }
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -160,8 +165,8 @@ function HoverCarousel({ images, title }: { images: string[]; title: string }) {
               src={src}
               alt={`${title} - ${i + 1}`}
               loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
-              style={{ opacity: i === index ? 1 : 0 }}
+              className="absolute inset-0 w-full h-full object-cover object-center transition-opacity ease-in-out"
+              style={{ opacity: i === index ? 1 : 0, transitionDuration: "600ms" }}
             />
           ))}
           {images.length > 1 && (
@@ -281,7 +286,7 @@ export function Projects() {
 
                 <HoverCarousel images={p.images ?? []} title={p.title} />
 
-                {p.active ? (
+                {(p.active || (p.images && p.images.length > 0)) && p.link !== "#" ? (
                   <a
                     href={p.link}
                     target="_blank"
@@ -289,7 +294,7 @@ export function Projects() {
                     className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-semibold transition-opacity hover:opacity-90"
                     style={{ backgroundColor: "#f59e0b", color: "#0a0a0a" }}
                   >
-                    Ver projeto
+                    Ver projeto ao vivo
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 ) : (
