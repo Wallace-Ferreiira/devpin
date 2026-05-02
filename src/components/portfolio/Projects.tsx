@@ -286,7 +286,7 @@ export function Projects() {
 
                 <HoverCarousel images={p.images ?? []} title={p.title} />
 
-                {p.active ? (
+                {(p.active || (p.images && p.images.length > 0)) && p.link !== "#" ? (
                   <a
                     href={p.link}
                     target="_blank"
@@ -294,7 +294,7 @@ export function Projects() {
                     className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-semibold transition-opacity hover:opacity-90"
                     style={{ backgroundColor: "#f59e0b", color: "#0a0a0a" }}
                   >
-                    Ver projeto
+                    Ver projeto ao vivo
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 ) : (
