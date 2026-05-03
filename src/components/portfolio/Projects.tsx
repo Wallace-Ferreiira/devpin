@@ -217,10 +217,10 @@ export function Projects() {
         <div className="text-center max-w-2xl mx-auto mb-16 reveal">
           <span className="text-sm font-semibold text-primary uppercase tracking-wider">Portfólio</span>
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mt-3">
-            Projetos — <span className="text-gradient">Cada nicho, uma solução.</span>
+            Projetos reais para negócios que <span className="text-gradient">querem vender mais</span>
           </h2>
           <p className="text-muted-foreground mt-4 text-lg">
-            Passe o mouse para ver as prévias.
+            Veja exemplos prontos criados para diferentes nichos. Passe o mouse para ver as prévias.
           </p>
         </div>
 
