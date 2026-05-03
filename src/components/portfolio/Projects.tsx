@@ -312,6 +312,22 @@ export function Projects() {
             </article>
           ))}
         </div>
+
+        <div className="reveal mt-16 text-center">
+          <a
+            href="https://wa.me/5521999999999?text=Quero%20algo%20assim%20para%20meu%20neg%C3%B3cio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-base transition-all hover:scale-105 hover:shadow-glow"
+            style={{ backgroundColor: "#f59e0b", color: "#0a0a0a" }}
+          >
+            Quero algo assim para meu negócio
+            <ExternalLink className="w-4 h-4" />
+          </a>
+          <p className="text-xs text-muted-foreground mt-3 uppercase tracking-wider">
+            Resposta rápida pelo WhatsApp
+          </p>
+        </div>
       </div>
     </section>
   );
