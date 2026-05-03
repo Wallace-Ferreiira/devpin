@@ -60,7 +60,7 @@ export function Navbar() {
             </a>
           ))}
           <a href="#contato" onClick={() => setOpen(false)} className="px-5 py-2.5 rounded-full bg-gradient-primary text-primary-foreground font-semibold text-center">
-            Contratar
+            Solicitar orçamento
           </a>
         </div>
       )}

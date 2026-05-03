@@ -16,10 +16,10 @@ export function Contact() {
       <div className="container mx-auto px-6 text-center max-w-2xl relative reveal">
         <span className="text-sm font-semibold text-primary uppercase tracking-wider">Contato</span>
         <h2 className="text-4xl lg:text-6xl font-bold tracking-tight mt-3">
-          Pronto para <span className="text-gradient">começar?</span>
+          Bora fazer seu negócio <span className="text-gradient">vender mais?</span>
         </h2>
         <p className="text-lg text-muted-foreground mt-5">
-          Me conta seu projeto. Respondo em até 24h.
+          Me conta sua ideia pelo WhatsApp e receba um orçamento personalizado em até 24h. Sem compromisso.
         </p>
 
         <a
@@ -30,8 +30,9 @@ export function Contact() {
           style={{ backgroundColor: "#25D366", boxShadow: "0 0 60px -10px rgba(37, 211, 102, 0.6)" }}
         >
           <WhatsAppIcon className="w-6 h-6" />
-          Chamar no WhatsApp agora
+          Solicitar orçamento agora
         </a>
+        <p className="text-xs text-muted-foreground mt-4">⚡ Resposta rápida · 🔒 Atendimento direto comigo</p>
 
         <div className="mt-8">
           <a href="mailto:wallacestar77@gmail.com" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">

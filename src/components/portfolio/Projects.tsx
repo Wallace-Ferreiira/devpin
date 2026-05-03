@@ -52,9 +52,9 @@ const projects: Project[] = [
   },
   {
     emoji: "💅",
-    niche: "Salão de Beleza",
-    title: "Salão de Beleza",
-    description: "Página com agendamento online, serviços e galeria de trabalhos.",
+    niche: "Clínica de Estética",
+    title: "Clínica de Estética",
+    description: "Página com agendamento online, procedimentos e galeria de resultados.",
     tags: ["Feminino", "Agendamento", "Portfólio"],
     link: "#",
     active: false,

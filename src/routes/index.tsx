@@ -4,6 +4,9 @@ import { Hero } from "@/components/portfolio/Hero";
 import { About } from "@/components/portfolio/About";
 import { Services } from "@/components/portfolio/Services";
 import { Projects } from "@/components/portfolio/Projects";
+import { PainPoints } from "@/components/portfolio/PainPoints";
+import { HowItWorks } from "@/components/portfolio/HowItWorks";
+import { SocialProof } from "@/components/portfolio/SocialProof";
 import { Contact, FloatingWhatsApp } from "@/components/portfolio/Contact";
 import { Footer } from "@/components/portfolio/Footer";
 import { useReveal } from "@/hooks/use-reveal";
@@ -27,9 +30,12 @@ function Index() {
       <Navbar />
       <main>
         <Hero />
-        <About />
+        <PainPoints />
         <Services />
+        <HowItWorks />
         <Projects />
+        <SocialProof />
+        <About />
         <Contact />
       </main>
       <Footer />

@@ -1,10 +1,10 @@
 import { Rocket, Globe, Package, Smartphone } from "lucide-react";
 
 const services = [
-  { icon: Rocket, title: "Landing Page", desc: "Página focada em vender seu produto ou serviço", price: "R$ 397" },
-  { icon: Globe, title: "Site Completo", desc: "Presença digital profissional com múltiplas páginas", price: "R$ 897" },
-  { icon: Package, title: "Sistema de Gestão", desc: "Controle de estoque, pedidos, rotas e mais", price: "R$ 1.497" },
-  { icon: Smartphone, title: "App Web", desc: "Aplicativo que roda no celular sem precisar instalar", price: "R$ 1.997" },
+  { icon: Rocket, title: "Landing Page", desc: "Página de alta conversão para captar clientes pelo WhatsApp todos os dias.", price: "R$ 397" },
+  { icon: Globe, title: "Site Institucional", desc: "Presença digital premium que passa autoridade e fecha mais negócios.", price: "R$ 897" },
+  { icon: Package, title: "Sistema de Gestão", desc: "Controle pedidos, clientes, estoque e rotas em um painel feito sob medida.", price: "R$ 1.497" },
+  { icon: Smartphone, title: "App Web", desc: "Aplicativo rápido que roda no celular sem instalar — pronto pra escalar.", price: "R$ 1.997" },
 ];
 
 export function Services() {
@@ -14,10 +14,10 @@ export function Services() {
         <div className="text-center max-w-2xl mx-auto mb-16 reveal">
           <span className="text-sm font-semibold text-primary uppercase tracking-wider">Serviços</span>
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mt-3">
-            O que eu <span className="text-gradient">faço</span>
+            Soluções que <span className="text-gradient">geram resultado</span>
           </h2>
           <p className="text-muted-foreground mt-4 text-lg">
-            Soluções completas, do design ao deploy. Você só foca no seu negócio.
+            Do design ao deploy: cada projeto pensado para atrair clientes, vender mais e fortalecer sua marca.
           </p>
         </div>
 

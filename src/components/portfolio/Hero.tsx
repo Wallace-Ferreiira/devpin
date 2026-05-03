@@ -22,23 +22,25 @@ export function Hero() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm"
             style={{ animation: "fade-up 0.6s ease-out" }}
           >
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-muted-foreground">Disponível para projetos</span>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span className="text-muted-foreground">Vagas abertas para novos projetos</span>
           </div>
 
           <h1
             className="font-bold tracking-tight leading-[0.95] text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem]"
             style={{ animation: "fade-up 0.8s ease-out 0.1s both" }}
           >
-            Transformo <span className="text-gradient">ideias</span> em{" "}
-            <span className="text-gradient">sistemas</span> que vendem.
+            Sites que <span className="text-gradient">vendem</span> por você — todos os dias.
           </h1>
 
           <p
             className="text-lg lg:text-xl text-muted-foreground max-w-xl leading-relaxed"
             style={{ animation: "fade-up 0.8s ease-out 0.2s both" }}
           >
-            Soluções digitais modernas para quem quer sair na frente.
+            Landing pages, sites e sistemas sob medida para atrair mais clientes, gerar autoridade e transformar visitas em vendas reais.
           </p>
 
           <div
@@ -46,18 +48,18 @@ export function Hero() {
             style={{ animation: "fade-up 0.8s ease-out 0.3s both" }}
           >
             <a
-              href="#projetos"
+              href="#contato"
               className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-gradient-primary text-primary-foreground font-semibold shadow-glow hover:scale-105 transition-transform"
             >
-              Ver meus projetos
+              Quero vender mais
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
-              href="#contato"
+              href="#projetos"
               className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-border hover:bg-surface text-foreground font-semibold transition-colors"
             >
-              <MessageCircle className="w-4 h-4" />
-              Falar comigo
+              <Sparkles className="w-4 h-4" />
+              Ver projetos reais
             </a>
           </div>
 
@@ -65,9 +67,9 @@ export function Hero() {
             className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-muted-foreground pt-2"
             style={{ animation: "fade-up 0.8s ease-out 0.4s both" }}
           >
-            <span className="inline-flex items-center gap-2"><Zap className="w-4 h-4 text-primary" /> Entrega rápida</span>
-            <span className="inline-flex items-center gap-2"><Smartphone className="w-4 h-4 text-primary" /> Mobile perfeito</span>
-            <span className="inline-flex items-center gap-2"><Shield className="w-4 h-4 text-primary" /> Profissional</span>
+            <span className="inline-flex items-center gap-2"><Zap className="w-4 h-4 text-primary" /> Entrega em poucos dias</span>
+            <span className="inline-flex items-center gap-2"><Smartphone className="w-4 h-4 text-primary" /> 100% responsivo</span>
+            <span className="inline-flex items-center gap-2"><Shield className="w-4 h-4 text-primary" /> Suporte direto</span>
           </div>
         </div>
 
