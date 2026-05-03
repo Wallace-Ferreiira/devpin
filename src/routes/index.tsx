@@ -30,11 +30,11 @@ function Index() {
       <Navbar />
       <main>
         <Hero />
-        <PainPoints />
         <Services />
-        <HowItWorks />
         <Projects />
+        <PainPoints />
         <SocialProof />
+        <HowItWorks />
         <About />
         <Contact />
       </main>

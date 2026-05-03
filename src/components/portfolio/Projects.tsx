@@ -217,10 +217,10 @@ export function Projects() {
         <div className="text-center max-w-2xl mx-auto mb-16 reveal">
           <span className="text-sm font-semibold text-primary uppercase tracking-wider">Portfólio</span>
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mt-3">
-            Projetos — <span className="text-gradient">Cada nicho, uma solução.</span>
+            Projetos reais para negócios que <span className="text-gradient">querem vender mais</span>
           </h2>
           <p className="text-muted-foreground mt-4 text-lg">
-            Passe o mouse para ver as prévias.
+            Veja exemplos prontos criados para diferentes nichos. Passe o mouse para ver as prévias.
           </p>
         </div>
 
@@ -311,6 +311,22 @@ export function Projects() {
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="reveal mt-16 text-center">
+          <a
+            href="https://wa.me/5521999999999?text=Quero%20algo%20assim%20para%20meu%20neg%C3%B3cio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-base transition-all hover:scale-105 hover:shadow-glow"
+            style={{ backgroundColor: "#f59e0b", color: "#0a0a0a" }}
+          >
+            Quero algo assim para meu negócio
+            <ExternalLink className="w-4 h-4" />
+          </a>
+          <p className="text-xs text-muted-foreground mt-3 uppercase tracking-wider">
+            Resposta rápida pelo WhatsApp
+          </p>
         </div>
       </div>
     </section>
