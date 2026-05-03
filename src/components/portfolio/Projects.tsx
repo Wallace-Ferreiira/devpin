@@ -69,7 +69,7 @@ const projects: Project[] = [
     link: "https://rafael-costa-rio-energetic-launch.lovable.app",
     active: true,
     images: [
-      "https://i.imgur.com/FndZLFq.png",
+      "https://i.imgur.com/JR3fVL7.png",
       "https://i.imgur.com/uqeevYy.png",
       "https://i.imgur.com/REJYv9U.png",
       "https://i.imgur.com/BO2p2gC.png",
