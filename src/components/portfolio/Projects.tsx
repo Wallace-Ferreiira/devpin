@@ -39,7 +39,7 @@ const projects: Project[] = [
     tags: ["Dark Theme", "Cardápio", "Delivery"],
     link: "#",
     active: false,
-    images: [],
+    images: ["https://i.imgur.com/EvMzedY.png"],
   },
   {
     emoji: "⚖️",
