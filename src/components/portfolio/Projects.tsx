@@ -6,7 +6,7 @@ type Project = {
   niche: string;
   title: string;
   description: string;
-  tags: [string, string, string];
+  tags: string[];
   link: string;
   active: boolean;
   preview?: string;
@@ -54,11 +54,16 @@ const projects: Project[] = [
     emoji: "💅",
     niche: "Clínica de Estética",
     title: "Clínica de Estética",
-    description: "Página com agendamento online, procedimentos e galeria de resultados.",
-    tags: ["Feminino", "Agendamento", "Portfólio"],
-    link: "#",
-    active: false,
-    images: [],
+    description: "Landing page premium para clínica estética com procedimentos, depoimentos em carrossel, seção antes e depois e agendamento direto pelo WhatsApp.",
+    tags: ["Premium", "Feminino", "WhatsApp", "Mobile Ready"],
+    link: "https://prestige-skin-reveal.lovable.app/",
+    active: true,
+    images: [
+      "https://i.imgur.com/Y1cuPMA.png",
+      "https://i.imgur.com/9fZfb8C.png",
+      "https://i.imgur.com/EBbeXye.png",
+      "https://i.imgur.com/2w03aP0.png",
+    ],
   },
   {
     emoji: "💪",
