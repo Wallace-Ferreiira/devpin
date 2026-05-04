@@ -137,6 +137,8 @@ const projects: Project[] = [
 function HoverCarousel({ images, title }: { images: string[]; title: string }) {
   const [index, setIndex] = useState(0);
   const [hovering, setHovering] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
@@ -152,61 +154,123 @@ function HoverCarousel({ images, title }: { images: string[]; title: string }) {
 
   const hasImages = images.length > 0;
 
+  const prev = () => setLightboxIndex((i) => (i - 1 + images.length) % images.length);
+  const next = () => setLightboxIndex((i) => (i + 1) % images.length);
+
   return (
-    <div
-      data-images={JSON.stringify(images)}
-      onMouseEnter={() => setHovering(true)}
-      onMouseLeave={() => {
-        setHovering(false);
-        setIndex(0);
-      }}
-      className="relative aspect-[16/10] rounded-lg overflow-hidden"
-      style={{ backgroundColor: "#0a0a0a", border: "1px solid #2a2a2a" }}
-    >
-      {hasImages ? (
-        <>
-          {images.map((src, i) => (
-            <img
-              key={src}
-              src={src}
-              alt={`${title} - ${i + 1}`}
-              loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover object-center transition-opacity ease-in-out"
-              style={{ opacity: i === index ? 1 : 0, transitionDuration: "600ms" }}
-            />
-          ))}
-          {images.length > 1 && (
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-              {images.map((_, i) => (
-                <span
-                  key={i}
-                  className="w-1.5 h-1.5 rounded-full transition-all"
-                  style={{
-                    backgroundColor: i === index ? "#f59e0b" : "rgba(255,255,255,0.3)",
-                    width: i === index ? "16px" : "6px",
-                  }}
-                />
-              ))}
+    <>
+      <div
+        data-images={JSON.stringify(images)}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => {
+          setHovering(false);
+          setIndex(0);
+        }}
+        onClick={() => {
+          if (hasImages) {
+            setLightboxIndex(index);
+            setLightboxOpen(true);
+          }
+        }}
+        className={`relative aspect-[16/10] rounded-lg overflow-hidden ${hasImages ? "cursor-zoom-in" : ""}`}
+        style={{ backgroundColor: "#0a0a0a", border: "1px solid #2a2a2a" }}
+      >
+        {hasImages ? (
+          <>
+            {images.map((src, i) => (
+              <img
+                key={src}
+                src={src}
+                alt={`${title} - ${i + 1}`}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover object-center transition-opacity ease-in-out"
+                style={{ opacity: i === index ? 1 : 0, transitionDuration: "600ms" }}
+              />
+            ))}
+            {images.length > 1 && (
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                {images.map((_, i) => (
+                  <span
+                    key={i}
+                    className="rounded-full transition-all"
+                    style={{
+                      backgroundColor: i === index ? "#f59e0b" : "rgba(255,255,255,0.3)",
+                      height: "6px",
+                      width: i === index ? "16px" : "6px",
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+          </>
+        ) : (
+          <div
+            className="absolute inset-0 grid place-items-center"
+            style={{
+              background:
+                "linear-gradient(110deg, #0a0a0a 30%, #1a1a1a 50%, #0a0a0a 70%)",
+              backgroundSize: "200% 100%",
+              animation: "shimmer 2.5s ease-in-out infinite",
+            }}
+          >
+            <div className="flex flex-col items-center gap-2" style={{ color: "#52525b" }}>
+              <ImageIcon className="w-6 h-6" />
+              <span className="text-xs font-medium">Em breve</span>
             </div>
-          )}
-        </>
-      ) : (
-        <div
-          className="absolute inset-0 grid place-items-center"
-          style={{
-            background:
-              "linear-gradient(110deg, #0a0a0a 30%, #1a1a1a 50%, #0a0a0a 70%)",
-            backgroundSize: "200% 100%",
-            animation: "shimmer 2.5s ease-in-out infinite",
-          }}
-        >
-          <div className="flex flex-col items-center gap-2" style={{ color: "#52525b" }}>
-            <ImageIcon className="w-6 h-6" />
-            <span className="text-xs font-medium">Em breve</span>
           </div>
-        </div>
+        )}
+      </div>
+
+      {hasImages && (
+        <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
+          <DialogContent className="max-w-5xl p-0 bg-black border-neutral-800 overflow-hidden">
+            <div className="relative aspect-[16/10] w-full bg-black">
+              <img
+                src={images[lightboxIndex]}
+                alt={`${title} - ${lightboxIndex + 1}`}
+                className="absolute inset-0 w-full h-full object-contain"
+              />
+              {images.length > 1 && (
+                <>
+                  <button
+                    type="button"
+                    onClick={prev}
+                    aria-label="Anterior"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 grid place-items-center w-10 h-10 rounded-full bg-black/60 hover:bg-black/80 text-white transition"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={next}
+                    aria-label="Próximo"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 grid place-items-center w-10 h-10 rounded-full bg-black/60 hover:bg-black/80 text-white transition"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {images.map((_, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => setLightboxIndex(i)}
+                        aria-label={`Ir para imagem ${i + 1}`}
+                        className="rounded-full transition-all"
+                        style={{
+                          backgroundColor: i === lightboxIndex ? "#f59e0b" : "rgba(255,255,255,0.4)",
+                          height: "8px",
+                          width: i === lightboxIndex ? "24px" : "8px",
+                        }}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
       )}
-    </div>
+    </>
   );
 }
 
