@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Sparkles, ExternalLink, ImageIcon } from "lucide-react";
+import { Sparkles, ExternalLink, ImageIcon, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 type Project = {
   emoji: string;
