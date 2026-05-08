@@ -39,7 +39,7 @@ const projects: Project[] = [
     tags: ["Dark Theme", "Cardápio", "Delivery"],
     link: "https://stack-digital-menu.lovable.app/",
     active: true,
-    images: ["https://i.imgur.com/wAKw6Si.png", "https://i.imgur.com/EvMzedY.png"],
+    images: ["https://i.imgur.com/wAKw6Si.png", "https://i.imgur.com/KoveZzk.png"],
   },
   {
     emoji: "⚖️",
