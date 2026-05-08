@@ -50,7 +50,7 @@ const projects: Project[] = [
     link: "#",
     active: true,
     images: [
-      "https://i.imgur.com/x25V1eT.png",
+      "https://i.imgur.com/4y9VFPX.png",
       "https://i.imgur.com/xMv4R23.png",
       "https://i.imgur.com/8vWM3Bd.png",
       "https://i.imgur.com/26PML7x.png",
@@ -105,8 +105,14 @@ const projects: Project[] = [
     description: "Página de captação de leads para venda e locação de imóveis.",
     tags: ["Imóveis", "Leads", "WhatsApp"],
     link: "#",
-    active: false,
-    images: [],
+    active: true,
+    images: [
+      "https://i.imgur.com/XUxLo6j.png",
+      "https://i.imgur.com/YWxK9z7.png",
+      "https://i.imgur.com/heG3UD3.png",
+      "https://i.imgur.com/CwKW3fR.png",
+      "https://i.imgur.com/kUvVHyp.png",
+    ],
   },
   {
     emoji: "🔧",
