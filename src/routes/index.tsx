@@ -15,10 +15,10 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "DevPin — Transformo ideias em sistemas que vendem" },
-      { name: "description", content: "Landing pages, sites completos e sistemas personalizados para o seu negócio. Solicite um orçamento pelo WhatsApp!" },
-      { property: "og:title", content: "DevPin — Transformo ideias em sistemas que vendem" },
-      { property: "og:description", content: "Landing pages, sites completos e sistemas personalizados para o seu negócio. Solicite um orçamento pelo WhatsApp!" },
+      { title: "Axion Tech — Transformo ideias em sistemas que vendem" },
+      { name: "description", content: "Axion Tech — Sistemas que transformam negócios. Landing pages, sites completos e sistemas personalizados para o seu negócio." },
+      { property: "og:title", content: "Axion Tech — Transformo ideias em sistemas que vendem" },
+      { property: "og:description", content: "Axion Tech — Sistemas que transformam negócios. Landing pages, sites completos e sistemas personalizados para o seu negócio." },
     ],
   }),
 });
