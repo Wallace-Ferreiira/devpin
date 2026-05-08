@@ -25,11 +25,17 @@ export function Navbar() {
       }`}
     >
       <nav className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2 font-bold text-xl">
-          <span className="grid place-items-center w-8 h-8 rounded-lg bg-gradient-primary text-primary-foreground">
-            D
+        <a href="#top" className="flex items-center gap-2.5">
+          <span className="relative grid place-items-center w-9 h-9">
+            <svg viewBox="0 0 24 24" className="absolute inset-0 w-full h-full" fill="none" stroke="#f59e0b" strokeWidth="2">
+              <polygon points="12,2 21,7 21,17 12,22 3,17 3,7" />
+            </svg>
+            <span className="relative font-bold text-[#f59e0b] text-sm">A</span>
           </span>
-          <span>DevPin</span>
+          <span className="flex flex-col leading-none">
+            <span className="font-bold text-white text-lg tracking-wide">AXION</span>
+            <span className="text-[#f59e0b] text-[10px] font-semibold tracking-[0.3em] mt-0.5">TECH</span>
+          </span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">
