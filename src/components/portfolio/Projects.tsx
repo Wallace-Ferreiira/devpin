@@ -47,7 +47,7 @@ const projects: Project[] = [
     title: "Escritório de Advocacia",
     description: "Landing page de alta conversão para captação de clientes via WhatsApp e Google Ads.",
     tags: ["Profissional", "Mobile First", "WhatsApp"],
-    link: "#",
+    link: "https://strategic-law-canvas.lovable.app/",
     active: true,
     images: [
       "https://i.imgur.com/4y9VFPX.png",
