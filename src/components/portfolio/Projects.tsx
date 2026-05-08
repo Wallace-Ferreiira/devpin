@@ -48,8 +48,14 @@ const projects: Project[] = [
     description: "Landing page de alta conversão para captação de clientes via WhatsApp e Google Ads.",
     tags: ["Profissional", "Mobile First", "WhatsApp"],
     link: "#",
-    active: false,
-    images: [],
+    active: true,
+    images: [
+      "https://i.imgur.com/x25V1eT.png",
+      "https://i.imgur.com/xMv4R23.png",
+      "https://i.imgur.com/8vWM3Bd.png",
+      "https://i.imgur.com/26PML7x.png",
+      "https://i.imgur.com/O8vy7MQ.png",
+    ],
   },
   {
     emoji: "💅",
