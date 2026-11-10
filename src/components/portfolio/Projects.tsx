@@ -1,150 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { Sparkles, ExternalLink, ImageIcon, ChevronLeft, ChevronRight, X } from "lucide-react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { ExternalLink, ImageIcon, ChevronLeft, ChevronRight, BriefcaseBusiness } from "lucide-react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
-type Project = {
-  emoji: string;
-  niche: string;
-  title: string;
-  description: string;
-  tags: string[];
-  link: string;
-  active: boolean;
-  preview?: string;
-  images?: string[];
-};
-
-const projects: Project[] = [
-  {
-    emoji: "💈",
-    niche: "Barbearia",
-    title: "Barbearia Dom — Rio de Janeiro",
-    description: "Landing page premium com agendamento via WhatsApp e portfólio de cortes.",
-    tags: ["Dark Theme", "WhatsApp", "Mobile Ready"],
-    link: "https://dom-dom-rio.lovable.app",
-    active: true,
-    preview: "https://dom-dom-rio.lovable.app",
-    images: [
-      "https://i.imgur.com/fm80upu.png",
-      "https://i.imgur.com/Ptowj5z.png",
-      "https://i.imgur.com/t0wtnu8.png",
-      "https://i.imgur.com/hfW3lfA.png",
-    ],
-  },
-  {
-    emoji: "🍔",
-    niche: "Cardápio Digital",
-    title: "Cardápio Digital",
-    description: "Cardápio digital com delivery pelo WhatsApp e seção de combos.",
-    tags: ["Dark Theme", "Cardápio", "Delivery"],
-    link: "https://stack-digital-menu.lovable.app/",
-    active: true,
-    images: ["https://i.imgur.com/wAKw6Si.png", "https://i.imgur.com/KoveZzk.png"],
-  },
-  {
-    emoji: "⚖️",
-    niche: "Advocacia",
-    title: "Escritório de Advocacia",
-    description: "Landing page de alta conversão para captação de clientes via WhatsApp e Google Ads.",
-    tags: ["Profissional", "Mobile First", "WhatsApp"],
-    link: "https://strategic-law-canvas.lovable.app/",
-    active: true,
-    images: [
-      "https://i.imgur.com/4y9VFPX.png",
-      "https://i.imgur.com/xMv4R23.png",
-      "https://i.imgur.com/8vWM3Bd.png",
-      "https://i.imgur.com/kAMSpyL.png",
-      "https://i.imgur.com/O8vy7MQ.png",
-    ],
-  },
-  {
-    emoji: "💅",
-    niche: "Clínica de Estética",
-    title: "Clínica de Estética",
-    description: "Landing page premium para clínica estética com procedimentos, depoimentos em carrossel, seção antes e depois e agendamento direto pelo WhatsApp.",
-    tags: ["Premium", "Feminino", "WhatsApp", "Mobile Ready"],
-    link: "https://prestige-skin-reveal.lovable.app/",
-    active: true,
-    images: [
-      "https://i.imgur.com/Y1cuPMA.png",
-      "https://i.imgur.com/9fZfb8C.png",
-      "https://i.imgur.com/EBbeXye.png",
-      "https://i.imgur.com/2w03aP0.png",
-    ],
-  },
-  {
-    emoji: "💪",
-    niche: "Personal Trainer",
-    title: "Personal Trainer",
-    description: "Landing page focada em captação de alunos com planos e depoimentos.",
-    tags: ["Fitness", "WhatsApp", "Conversão"],
-    link: "https://rafael-costa-rio-energetic-launch.lovable.app",
-    active: true,
-    images: [
-      "https://i.imgur.com/JR3fVL7.png",
-      "https://i.imgur.com/uqeevYy.png",
-      "https://i.imgur.com/REJYv9U.png",
-      "https://i.imgur.com/BO2p2gC.png",
-      "https://i.imgur.com/KGGZ4YN.png",
-    ],
-  },
-  {
-    emoji: "🐶",
-    niche: "Pet Shop",
-    title: "Pet Shop / Banho e Tosa",
-    description: "Site com agendamento de banho e tosa e cardápio de serviços.",
-    tags: ["Pet", "Agendamento", "Fofo"],
-    link: "#",
-    active: false,
-    images: [],
-  },
-  {
-    emoji: "🏠",
-    niche: "Imóveis",
-    title: "Corretor de Imóveis",
-    description: "Página de captação de leads para venda e locação de imóveis.",
-    tags: ["Imóveis", "Leads", "WhatsApp"],
-    link: "https://mendes-prime-landing.lovable.app/",
-    active: true,
-    images: [
-      "https://i.imgur.com/XUxLo6j.png",
-      "https://i.imgur.com/YWxK9z7.png",
-      "https://i.imgur.com/heG3UD3.png",
-      "https://i.imgur.com/CwKW3fR.png",
-      "https://i.imgur.com/kUvVHyp.png",
-    ],
-  },
-  {
-    emoji: "🔧",
-    niche: "Mecânica",
-    title: "Mecânica / Autopeças",
-    description: "Landing page com serviços, localização e orçamento via WhatsApp.",
-    tags: ["Automotivo", "WhatsApp", "Local"],
-    link: "#",
-    active: false,
-    images: [],
-  },
-  {
-    emoji: "📚",
-    niche: "Educação",
-    title: "Professor Particular",
-    description: "Página de captação de alunos com áreas de ensino e depoimentos.",
-    tags: ["Educação", "Online", "WhatsApp"],
-    link: "#",
-    active: false,
-    images: [],
-  },
-  {
-    emoji: "🧽",
-    niche: "Limpeza",
-    title: "Limpeza Residencial",
-    description: "Landing page com pacotes de serviços e agendamento fácil.",
-    tags: ["Serviços", "Confiança", "WhatsApp"],
-    link: "#",
-    active: false,
-    images: [],
-  },
-];
+import { projects } from "@/lib/projects";
+import { WHATSAPP_URL } from "@/lib/contact";
+import { Button } from "@/components/ui/button";
 
 function HoverCarousel({ images, title }: { images: string[]; title: string }) {
   const [index, setIndex] = useState(0);
@@ -185,7 +45,7 @@ function HoverCarousel({ images, title }: { images: string[]; title: string }) {
           }
         }}
         className={`relative aspect-[16/10] rounded-lg overflow-hidden ${hasImages ? "cursor-zoom-in" : ""}`}
-        style={{ backgroundColor: "#0a0a0a", border: "1px solid #2a2a2a" }}
+        style={{ backgroundColor: "var(--background)", border: "1px solid var(--border)" }}
       >
         {hasImages ? (
           <>
@@ -206,7 +66,7 @@ function HoverCarousel({ images, title }: { images: string[]; title: string }) {
                     key={i}
                     className="rounded-full transition-all"
                     style={{
-                      backgroundColor: i === index ? "#f59e0b" : "rgba(255,255,255,0.3)",
+                      backgroundColor: i === index ? "var(--primary)" : "var(--indicator-muted)",
                       height: "6px",
                       width: i === index ? "16px" : "6px",
                     }}
@@ -235,8 +95,9 @@ function HoverCarousel({ images, title }: { images: string[]; title: string }) {
 
       {hasImages && (
         <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
-          <DialogContent className="max-w-5xl p-0 bg-black border-neutral-800 overflow-hidden">
-            <div className="relative aspect-[16/10] w-full bg-black">
+          <DialogContent aria-describedby={undefined} className="max-w-5xl p-0 bg-background border-border overflow-hidden">
+            <DialogTitle className="sr-only">{title}</DialogTitle>
+            <div className="relative aspect-[16/10] w-full bg-background">
               <img
                 src={images[lightboxIndex]}
                 alt={`${title} - ${lightboxIndex + 1}`}
@@ -244,32 +105,35 @@ function HoverCarousel({ images, title }: { images: string[]; title: string }) {
               />
               {images.length > 1 && (
                 <>
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
                     onClick={prev}
                     aria-label="Anterior"
-                    className="absolute left-3 top-1/2 -translate-y-1/2 grid place-items-center w-10 h-10 rounded-full bg-black/60 hover:bg-black/80 text-white transition"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 grid place-items-center w-10 h-10 rounded-full bg-background/60 hover:bg-background/80 text-foreground transition"
                   >
                     <ChevronLeft className="w-6 h-6" />
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     type="button"
+                    variant="ghost"
                     onClick={next}
                     aria-label="Próximo"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 grid place-items-center w-10 h-10 rounded-full bg-black/60 hover:bg-black/80 text-white transition"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 grid place-items-center w-10 h-10 rounded-full bg-background/60 hover:bg-background/80 text-foreground transition"
                   >
                     <ChevronRight className="w-6 h-6" />
-                  </button>
+                  </Button>
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                     {images.map((_, i) => (
-                      <button
+                      <Button
                         key={i}
                         type="button"
+                    variant="ghost"
                         onClick={() => setLightboxIndex(i)}
                         aria-label={`Ir para imagem ${i + 1}`}
                         className="rounded-full transition-all"
                         style={{
-                          backgroundColor: i === lightboxIndex ? "#f59e0b" : "rgba(255,255,255,0.4)",
+                          backgroundColor: i === lightboxIndex ? "var(--primary)" : "var(--indicator-muted)",
                           height: "8px",
                           width: i === lightboxIndex ? "24px" : "8px",
                         }}
@@ -299,10 +163,10 @@ export function Projects() {
         <div className="text-center max-w-2xl mx-auto mb-16 reveal">
           <span className="text-sm font-semibold text-primary uppercase tracking-wider">Portfólio</span>
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mt-3">
-            Projetos reais para negócios que <span className="text-gradient">querem vender mais</span>
+            Demonstrações para negócios que <span className="text-gradient">querem vender mais</span>
           </h2>
           <p className="text-muted-foreground mt-4 text-lg">
-            Veja exemplos prontos criados para diferentes nichos. Passe o mouse para ver as prévias.
+            Veja exemplos prontos criados para diferentes nichos. 
           </p>
         </div>
 
@@ -313,15 +177,15 @@ export function Projects() {
               data-images={JSON.stringify(p.images ?? [])}
               className="reveal group relative rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1"
               style={{
-                backgroundColor: "#111111",
-                border: "1px solid #2a2a2a",
+                backgroundColor: "var(--card)",
+                border: "1px solid var(--border)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "#f59e0b";
-                e.currentTarget.style.boxShadow = "0 0 40px -8px rgba(245, 158, 11, 0.4)";
+                e.currentTarget.style.borderColor = "var(--primary)";
+                e.currentTarget.style.boxShadow = "var(--shadow-glow)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "#2a2a2a";
+                e.currentTarget.style.borderColor = "var(--border)";
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
@@ -329,28 +193,28 @@ export function Projects() {
                 <span
                   className="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase"
                   style={{
-                    backgroundColor: "rgba(245, 158, 11, 0.15)",
-                    color: "#f59e0b",
-                    border: "1px solid rgba(245, 158, 11, 0.4)",
+                    backgroundColor: "var(--badge-background)",
+                    color: "var(--primary)",
+                    border: "1px solid var(--badge-border)",
                   }}
                 >
-                  AO VIVO 🟢
+                  DEMONSTRAÇÃO
                 </span>
               )}
 
               <div
                 className="relative h-24 flex items-center justify-between px-5"
-                style={{ backgroundColor: "#1a1a1a", borderBottom: "1px solid #2a2a2a" }}
+                style={{ backgroundColor: "var(--surface)", borderBottom: "1px solid var(--border)" }}
               >
-                <span className="text-4xl" aria-hidden>{p.emoji}</span>
-                <span className="text-sm font-bold uppercase tracking-wider" style={{ color: "#f59e0b" }}>
+                <BriefcaseBusiness className="w-9 h-9 text-primary" aria-hidden />
+                <span className="text-sm font-bold uppercase tracking-wider" style={{ color: "var(--primary)" }}>
                   {p.niche}
                 </span>
               </div>
 
               <div className="flex-1 flex flex-col p-6 space-y-4">
-                <h3 className="text-xl font-bold leading-tight text-white">{p.title}</h3>
-                <p className="text-sm leading-relaxed flex-1" style={{ color: "#a1a1aa" }}>
+                <h3 className="text-xl font-bold leading-tight text-foreground">{p.title}</h3>
+                <p className="text-sm leading-relaxed flex-1" style={{ color: "var(--muted-foreground)" }}>
                   {p.description}
                 </p>
 
@@ -359,7 +223,7 @@ export function Projects() {
                     <span
                       key={t}
                       className="px-2.5 py-1 rounded-full text-xs font-medium"
-                      style={{ backgroundColor: "#1f1f1f", color: "#f59e0b" }}
+                      style={{ backgroundColor: "var(--muted)", color: "var(--primary)" }}
                     >
                       {t}
                     </span>
@@ -368,28 +232,11 @@ export function Projects() {
 
                 <HoverCarousel images={p.images ?? []} title={p.title} />
 
-                {(p.active || (p.images && p.images.length > 0)) && p.link !== "#" ? (
-                  <a
-                    href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-semibold transition-opacity hover:opacity-90"
-                    style={{ backgroundColor: "#f59e0b", color: "#0a0a0a" }}
-                  >
-                    Ver projeto ao vivo
-                    <ExternalLink className="w-4 h-4" />
+                <Button asChild className="h-auto rounded-full px-5 py-2.5 font-semibold">
+                  <a href={p.link} target="_blank" rel="noopener noreferrer">
+                    Ver demonstração <ExternalLink className="w-4 h-4" />
                   </a>
-                ) : (
-                  <button
-                    type="button"
-                    disabled
-                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-semibold cursor-not-allowed"
-                    style={{ backgroundColor: "#1a1a1a", color: "#71717a", border: "1px solid #2a2a2a" }}
-                  >
-                    <Sparkles className="w-4 h-4" />
-                    Em breve
-                  </button>
-                )}
+                </Button>
               </div>
             </article>
           ))}
@@ -397,11 +244,11 @@ export function Projects() {
 
         <div className="reveal mt-16 text-center">
           <a
-            href="https://wa.me/5521999999999?text=Quero%20algo%20assim%20para%20meu%20neg%C3%B3cio"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-base transition-all hover:scale-105 hover:shadow-glow"
-            style={{ backgroundColor: "#f59e0b", color: "#0a0a0a" }}
+            style={{ backgroundColor: "var(--primary)", color: "var(--primary-foreground)" }}
           >
             Quero algo assim para meu negócio
             <ExternalLink className="w-4 h-4" />

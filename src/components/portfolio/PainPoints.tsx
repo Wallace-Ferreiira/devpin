@@ -9,7 +9,7 @@ const pains = [
   {
     icon: Smartphone,
     title: "Quebra no celular",
-    desc: "Mais de 80% dos clientes abrem pelo celular. Se trava ou desalinha, eles fecham.",
+    desc: "Seus clientes também acessam pelo celular. Se trava ou desalinha, eles fecham.",
   },
   {
     icon: Clock,

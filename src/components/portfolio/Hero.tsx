@@ -1,5 +1,4 @@
 import { ArrowRight, MessageCircle, Sparkles, Zap, Smartphone, Shield } from "lucide-react";
-import heroMain from "@/assets/hero-main.jpg";
 import cardLanding from "@/assets/card-landing.jpg";
 import cardSystem from "@/assets/card-system.jpg";
 import cardMobile from "@/assets/card-mobile.jpg";
@@ -33,14 +32,14 @@ export function Hero() {
             className="font-bold tracking-tight leading-[0.95] text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem]"
             style={{ animation: "fade-up 0.8s ease-out 0.1s both" }}
           >
-            Sites que <span className="text-gradient">vendem</span> por você — todos os dias.
+            Seu negócio com site profissional e mais clientes chegando pelo <span className="text-gradient">WhatsApp</span>
           </h1>
 
           <p
             className="text-lg lg:text-xl text-muted-foreground max-w-xl leading-relaxed"
             style={{ animation: "fade-up 0.8s ease-out 0.2s both" }}
           >
-            Landing pages, sites e sistemas sob medida para atrair mais clientes, gerar autoridade e transformar visitas em vendas reais.
+            Páginas de apresentação, sites e sistemas sob medida para atrair mais clientes, gerar autoridade e transformar visitas em vendas reais.
           </p>
 
           <div
@@ -59,7 +58,7 @@ export function Hero() {
               className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-border hover:bg-surface text-foreground font-semibold transition-colors"
             >
               <Sparkles className="w-4 h-4" />
-              Ver projetos reais
+              Ver demonstrações
             </a>
           </div>
 
@@ -68,7 +67,7 @@ export function Hero() {
             style={{ animation: "fade-up 0.8s ease-out 0.4s both" }}
           >
             <span className="inline-flex items-center gap-2"><Zap className="w-4 h-4 text-primary" /> Entrega em poucos dias</span>
-            <span className="inline-flex items-center gap-2"><Smartphone className="w-4 h-4 text-primary" /> 100% responsivo</span>
+            <span className="inline-flex items-center gap-2"><Smartphone className="w-4 h-4 text-primary" /> Pensado para celular</span>
             <span className="inline-flex items-center gap-2"><Shield className="w-4 h-4 text-primary" /> Suporte direto</span>
           </div>
         </div>
@@ -85,11 +84,11 @@ export function Hero() {
           >
             <div className="absolute inset-0 rounded-3xl ring-1 ring-primary/40 pointer-events-none" />
             <img
-              src={heroMain}
-              alt="Aplicativo de gestão de rotas - mockup principal"
+              src="https://i.imgur.com/XUxLo6j.png"
+              alt="Demonstração do site para corretor de imóveis"
               width={1024}
               height={1280}
-              className="w-full h-auto block"
+              className="w-full aspect-[4/5] object-cover object-center block"
             />
           </div>
 
@@ -99,7 +98,7 @@ export function Hero() {
             style={{ animation: "fade-up 0.8s ease-out 0.8s both, float 6s ease-in-out 1.6s infinite" }}
           >
             <img src={cardLanding} alt="Mockup landing page" loading="lazy" width={512} height={768} className="rounded-xl w-full h-auto" />
-            <p className="text-xs text-center mt-2 mb-1 font-medium">Landing Page</p>
+            <p className="text-xs text-center mt-2 mb-1 font-medium">Página de apresentação</p>
           </div>
 
           {/* Floating Card 2 - bottom left */}
@@ -108,7 +107,7 @@ export function Hero() {
             style={{ animation: "fade-up 0.8s ease-out 1.1s both, float 7s ease-in-out 2s infinite" }}
           >
             <img src={cardSystem} alt="Mockup sistema web" loading="lazy" width={768} height={512} className="rounded-xl w-full h-auto" />
-            <p className="text-xs text-center mt-2 mb-1 font-medium">Sistema Web</p>
+            <p className="text-xs text-center mt-2 mb-1 font-medium">Sistema de gestão</p>
           </div>
 
           {/* Floating Card 3 - right middle */}
@@ -117,7 +116,7 @@ export function Hero() {
             style={{ animation: "fade-up 0.8s ease-out 1.4s both, float 8s ease-in-out 2.4s infinite" }}
           >
             <img src={cardMobile} alt="Mockup app mobile" loading="lazy" width={512} height={768} className="rounded-xl w-full h-auto" />
-            <p className="text-xs text-center mt-2 mb-1 font-medium">App Mobile</p>
+            <p className="text-xs text-center mt-2 mb-1 font-medium">Aplicativo para celular</p>
           </div>
         </div>
       </div>
