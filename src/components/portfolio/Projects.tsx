@@ -31,7 +31,10 @@ function HoverCarousel({ images, title }: { images: string[]; title: string }) {
 
   return (
     <>
-      <div
+      <Button
+        type="button"
+        variant="ghost"
+        aria-label={`Abrir capturas de ${title}`}
         data-images={JSON.stringify(images)}
         onMouseEnter={() => setHovering(true)}
         onMouseLeave={() => {
@@ -44,7 +47,7 @@ function HoverCarousel({ images, title }: { images: string[]; title: string }) {
             setLightboxOpen(true);
           }
         }}
-        className={`relative aspect-[16/10] rounded-lg overflow-hidden ${hasImages ? "cursor-zoom-in" : ""}`}
+        className={`relative block w-full h-auto p-0 aspect-[16/10] rounded-lg overflow-hidden ${hasImages ? "cursor-zoom-in" : ""}`}
         style={{ backgroundColor: "var(--background)", border: "1px solid var(--border)" }}
       >
         {hasImages ? (
@@ -91,7 +94,7 @@ function HoverCarousel({ images, title }: { images: string[]; title: string }) {
             </div>
           </div>
         )}
-      </div>
+      </Button>
 
       {hasImages && (
         <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
@@ -131,7 +134,7 @@ function HoverCarousel({ images, title }: { images: string[]; title: string }) {
                     variant="ghost"
                         onClick={() => setLightboxIndex(i)}
                         aria-label={`Ir para imagem ${i + 1}`}
-                        className="rounded-full transition-all"
+                        className="rounded-full transition-all p-0 min-w-0"
                         style={{
                           backgroundColor: i === lightboxIndex ? "var(--primary)" : "var(--indicator-muted)",
                           height: "8px",
@@ -177,15 +180,15 @@ export function Projects() {
               data-images={JSON.stringify(p.images ?? [])}
               className="reveal group relative rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1"
               style={{
-                backgroundColor: "var(--card)",
-                border: "1px solid var(--border)",
+                backgroundColor: "var(--project-card)",
+                border: "1px solid var(--project-border)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = "var(--primary)";
                 e.currentTarget.style.boxShadow = "var(--shadow-glow)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "var(--border)";
+                e.currentTarget.style.borderColor = "var(--project-border)";
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
@@ -194,7 +197,7 @@ export function Projects() {
                   className="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase"
                   style={{
                     backgroundColor: "var(--badge-background)",
-                    color: "var(--primary)",
+                    color: "var(--project-accent)",
                     border: "1px solid var(--badge-border)",
                   }}
                 >
@@ -204,10 +207,10 @@ export function Projects() {
 
               <div
                 className="relative h-24 flex items-center justify-between px-5"
-                style={{ backgroundColor: "var(--surface)", borderBottom: "1px solid var(--border)" }}
+                style={{ backgroundColor: "var(--project-banner)", borderBottom: "1px solid var(--project-border)" }}
               >
                 <BriefcaseBusiness className="w-9 h-9 text-primary" aria-hidden />
-                <span className="text-sm font-bold uppercase tracking-wider" style={{ color: "var(--primary)" }}>
+                <span className="text-sm font-bold uppercase tracking-wider" style={{ color: "var(--project-accent)" }}>
                   {p.niche}
                 </span>
               </div>
@@ -243,6 +246,7 @@ export function Projects() {
         </div>
 
         <div className="reveal mt-16 text-center">
+          <Button asChild className="h-auto whitespace-normal px-8 py-4 rounded-full font-bold text-base hover:scale-105 hover:shadow-glow">
           <a
             href={WHATSAPP_URL}
             target="_blank"
@@ -253,6 +257,7 @@ export function Projects() {
             Quero algo assim para meu negócio
             <ExternalLink className="w-4 h-4" />
           </a>
+          </Button>
           <p className="text-xs text-muted-foreground mt-3 uppercase tracking-wider">
             Resposta rápida pelo WhatsApp
           </p>

@@ -112,6 +112,10 @@
   --badge-background: oklch(0.74 0.17 60 / 0.15);
   --badge-border: oklch(0.74 0.17 60 / 0.4);
   --indicator-muted: oklch(0.98 0 0 / 0.3);
+  --project-card: #111111;
+  --project-banner: #1a1a1a;
+  --project-border: #2a2a2a;
+  --project-accent: #f59e0b;
 }
 
 .dark {

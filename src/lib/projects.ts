@@ -28,8 +28,8 @@ const allProjects: Project[] = [
   {
     niche: "Cardápio Digital",
     title: "Cardápio Digital — Demonstração",
-    description: "Cardápio digital com delivery pelo WhatsApp e seção de combos.",
-    tags: ["Cardápio", "Delivery"],
+    description: "Cardápio digital com entregas pelo WhatsApp e seção de combos.",
+    tags: ["Cardápio", "Entregas"],
     link: "https://stack-digital-menu.lovable.app/",
     active: true,
     images: ["https://i.imgur.com/wAKw6Si.png", "https://i.imgur.com/KoveZzk.png"],
@@ -90,7 +90,7 @@ const allProjects: Project[] = [
   {
     niche: "Imóveis",
     title: "Corretor de Imóveis — Demonstração",
-    description: "Página de captação de leads para venda e locação de imóveis.",
+    description: "Página de captação de contatos para venda e locação de imóveis.",
     tags: ["Imóveis", "Contatos", "WhatsApp"],
     link: "https://mendes-prime-landing.lovable.app/",
     active: true,
