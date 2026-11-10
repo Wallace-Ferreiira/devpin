@@ -21,7 +21,7 @@ describe("Portfolio rules", () => {
       ["wAKw6Si", "KoveZzk"],
       ["4y9VFPX", "xMv4R23", "8vWM3Bd", "kAMSpyL", "O8vy7MQ"],
       ["Y1cuPMA", "9fZfb8C", "EBbeXye", "2w03aP0"],
-      ["JR3fVL7", "uqeevY9y".replace("9y", "y"), "REJYv9U", "BO2p2gC", "KGGZ4YN"],
+      ["JR3fVL7", "uqeevYy", "REJYv9U", "BO2p2gC", "KGGZ4YN"],
       ["fm80upu", "Ptowj5z", "t0wtnu8", "hfW3lfA"],
     ].map((ids) => ids.map((id) => `https://i.imgur.com/${id}.png`)));
   });
