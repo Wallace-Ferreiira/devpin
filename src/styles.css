@@ -109,6 +109,9 @@
   --gradient-radial: radial-gradient(ellipse at top, oklch(0.74 0.17 60 / 0.15), transparent 70%);
   --shadow-glow: 0 0 60px -10px oklch(0.74 0.17 60 / 0.5);
   --shadow-card: 0 20px 60px -20px oklch(0 0 0 / 0.6);
+  --badge-background: oklch(0.74 0.17 60 / 0.15);
+  --badge-border: oklch(0.74 0.17 60 / 0.4);
+  --indicator-muted: oklch(0.98 0 0 / 0.3);
 }
 
 .dark {

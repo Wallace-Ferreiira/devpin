@@ -1,44 +1,74 @@
-import { Mail } from "lucide-react";
+import { useState, type FormEvent } from "react";
+import { Mail, MessageCircle, Send } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { contactSchema, contactWhatsappUrl, WHATSAPP_URL } from "@/lib/contact";
 
-export const WHATSAPP_URL =
-  "https://wa.me/5521976885245?text=Ol%C3%A1%20Wallace!%20Vim%20pelo%20seu%20portf%C3%B3lio%20e%20quero%20saber%20mais%20sobre%20seus%20servi%C3%A7os%20%F0%9F%98%8A";
+export { WHATSAPP_URL } from "@/lib/contact";
 
-const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
-    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
-  </svg>
-);
+const fields = [
+  { key: "name", label: "Nome", max: 100, autocomplete: "name", type: "text" },
+  { key: "whatsapp", label: "WhatsApp com DDD", max: 25, autocomplete: "tel", type: "tel" },
+  { key: "business", label: "Tipo de negócio", max: 100, autocomplete: "organization", type: "text" },
+] as const;
 
 export function Contact() {
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [status, setStatus] = useState("");
+
+  function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("");
+    const form = new FormData(event.currentTarget);
+    const input = { name: form.get("name"), whatsapp: form.get("whatsapp"), business: form.get("business"), message: form.get("message") };
+    const result = contactSchema.safeParse(input);
+    if (!result.success) {
+      const nextErrors: Record<string, string> = {};
+      for (const issue of result.error.issues) nextErrors[String(issue.path[0])] ??= issue.message;
+      setErrors(nextErrors);
+      return;
+    }
+    setErrors({});
+    const destination = contactWhatsappUrl(input);
+    window.open(destination, "_blank", "noopener,noreferrer");
+    setStatus("Sua mensagem está pronta no WhatsApp. Confirme o envio por lá.");
+  }
+
   return (
     <section id="contato" className="py-24 lg:py-32 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none" style={{ background: "var(--gradient-radial)" }} />
       <div className="container mx-auto px-6 text-center max-w-2xl relative reveal">
         <span className="text-sm font-semibold text-primary uppercase tracking-wider">Contato</span>
-        <h2 className="text-4xl lg:text-6xl font-bold tracking-tight mt-3">
-          Bora fazer seu negócio <span className="text-gradient">vender mais?</span>
-        </h2>
-        <p className="text-lg text-muted-foreground mt-5">
-          Me conta sua ideia pelo WhatsApp e receba um orçamento personalizado em até 24h. Sem compromisso.
-        </p>
+        <h2 className="text-4xl lg:text-6xl font-bold tracking-tight mt-3">Bora fazer seu negócio <span className="text-gradient">vender mais?</span></h2>
+        <p className="text-lg text-muted-foreground mt-5">Me conta sua ideia e receba um orçamento personalizado. Sem compromisso.</p>
+        <Button asChild className="mt-10 h-auto px-8 py-5 rounded-full font-bold text-lg whitespace-normal shadow-glow">
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"><MessageCircle className="w-6 h-6" />Solicitar orçamento agora</a>
+        </Button>
+        <p className="text-xs text-muted-foreground mt-4">Resposta rápida · Atendimento direto comigo</p>
 
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-10 inline-flex items-center gap-3 px-8 py-5 rounded-full font-bold text-lg text-white hover:scale-105 transition-transform"
-          style={{ backgroundColor: "#25D366", boxShadow: "0 0 60px -10px rgba(37, 211, 102, 0.6)" }}
-        >
-          <WhatsAppIcon className="w-6 h-6" />
-          Solicitar orçamento agora
-        </a>
-        <p className="text-xs text-muted-foreground mt-4">⚡ Resposta rápida · 🔒 Atendimento direto comigo</p>
-
+        <form onSubmit={submit} noValidate className="mt-10 text-left space-y-5">
+          <div className="grid sm:grid-cols-2 gap-5">
+            {fields.map((field) => (
+              <div key={field.key} className={field.key === "business" ? "sm:col-span-2" : ""}>
+                <label htmlFor={`contact-${field.key}`} className="block mb-2 text-sm font-medium">{field.label}</label>
+                <Input id={`contact-${field.key}`} name={field.key} type={field.type} autoComplete={field.autocomplete} maxLength={field.max} required aria-invalid={Boolean(errors[field.key])} aria-describedby={errors[field.key] ? `error-${field.key}` : undefined} className="h-11" />
+                {errors[field.key] && <p id={`error-${field.key}`} role="alert" className="text-sm text-primary mt-2">{errors[field.key]}</p>}
+              </div>
+            ))}
+          </div>
+          <div>
+            <label htmlFor="contact-message" className="block mb-2 text-sm font-medium">Mensagem</label>
+            <Textarea id="contact-message" name="message" maxLength={1000} required rows={5} aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "error-message" : undefined} />
+            {errors.message && <p id="error-message" role="alert" className="text-sm text-primary mt-2">{errors.message}</p>}
+          </div>
+          <p className="text-xs text-muted-foreground">Ao continuar, seus dados serão encaminhados ao WhatsApp para atendimento. <Link to="/politica-de-privacidade" className="text-primary underline">Política de Privacidade</Link></p>
+          <Button type="submit" className="w-full h-auto py-4 font-semibold"><Send />Enviar pelo WhatsApp</Button>
+          <p role="status" className="text-sm text-muted-foreground">{status}</p>
+        </form>
         <div className="mt-8">
-          <a href="mailto:wallacestar77@gmail.com" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-            <Mail className="w-4 h-4" />
-            wallacestar77@gmail.com
-          </a>
+          <a href="mailto:wallacestar77@gmail.com" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors break-all"><Mail className="w-4 h-4 shrink-0" />wallacestar77@gmail.com</a>
         </div>
       </div>
     </section>
@@ -47,15 +77,8 @@ export function Contact() {
 
 export function FloatingWhatsApp() {
   return (
-    <a
-      href={WHATSAPP_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Falar no WhatsApp"
-      className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full text-white grid place-items-center hover:scale-110 transition-transform"
-      style={{ backgroundColor: "#25D366", animation: "wa-pulse 2s ease-in-out infinite" }}
-    >
-      <WhatsAppIcon className="w-7 h-7" />
-    </a>
+    <Button asChild size="icon" className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-glow hover:scale-110 transition-transform">
+      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp"><MessageCircle className="w-7 h-7" /></a>
+    </Button>
   );
 }
