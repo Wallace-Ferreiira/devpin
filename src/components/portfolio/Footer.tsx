@@ -1,3 +1,6 @@
+import { Link } from "@tanstack/react-router";
+import { WHATSAPP_URL } from "@/lib/contact";
+
 export function Footer() {
   return (
     <footer className="py-10 border-t border-border">
@@ -14,7 +17,13 @@ export function Footer() {
             <span className="text-[#f59e0b] text-[9px] font-semibold tracking-[0.3em] mt-0.5">TECH</span>
           </span>
         </div>
-        <p>© {new Date().getFullYear()} Wallace · Nova Iguaçu, RJ</p>
+        <div className="flex flex-col items-center sm:items-end gap-2">
+          <p>© Wallace · Nova Iguaçu, RJ</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary">WhatsApp</a>
+            <Link to="/politica-de-privacidade" className="hover:text-primary">Política de Privacidade</Link>
+          </div>
+        </div>
       </div>
     </footer>
   );

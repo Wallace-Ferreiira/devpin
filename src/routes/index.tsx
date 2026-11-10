@@ -6,7 +6,6 @@ import { Services } from "@/components/portfolio/Services";
 import { Projects } from "@/components/portfolio/Projects";
 import { PainPoints } from "@/components/portfolio/PainPoints";
 import { HowItWorks } from "@/components/portfolio/HowItWorks";
-import { SocialProof } from "@/components/portfolio/SocialProof";
 import { Contact, FloatingWhatsApp } from "@/components/portfolio/Contact";
 import { Footer } from "@/components/portfolio/Footer";
 import { useReveal } from "@/hooks/use-reveal";
@@ -17,6 +16,10 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Axion Tech — Transformo ideias em sistemas que vendem" },
       { name: "description", content: "Axion Tech — Sistemas que transformam negócios. Landing pages, sites completos e sistemas personalizados para o seu negócio." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://i.imgur.com/XUxLo6j.png" },
+      { name: "twitter:image", content: "https://i.imgur.com/XUxLo6j.png" },
       { property: "og:title", content: "Axion Tech — Transformo ideias em sistemas que vendem" },
       { property: "og:description", content: "Axion Tech — Sistemas que transformam negócios. Landing pages, sites completos e sistemas personalizados para o seu negócio." },
     ],
@@ -34,7 +37,6 @@ function Index() {
         <Services />
         <Projects />
         <PainPoints />
-        <SocialProof />
         <HowItWorks />
         <Contact />
       </main>

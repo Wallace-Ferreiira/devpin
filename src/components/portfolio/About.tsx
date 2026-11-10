@@ -1,43 +1,3 @@
-import { useEffect, useRef, useState } from "react";
-import avatar from "@/assets/avatar.jpg";
-
-function Counter({ to, suffix = "", label }: { to: number; suffix?: string; label: string }) {
-  const [val, setVal] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const started = useRef(false);
-
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting && !started.current) {
-          started.current = true;
-          const duration = 1400;
-          const start = performance.now();
-          const tick = (t: number) => {
-            const p = Math.min((t - start) / duration, 1);
-            setVal(Math.floor(p * to));
-            if (p < 1) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
-        }
-      },
-      { threshold: 0.4 }
-    );
-    if (ref.current) io.observe(ref.current);
-    return () => io.disconnect();
-  }, [to]);
-
-  return (
-    <div ref={ref} className="text-center sm:text-left">
-      <div className="text-4xl lg:text-5xl font-bold text-gradient">
-        {val}
-        {suffix}
-      </div>
-      <p className="text-sm text-muted-foreground mt-1">{label}</p>
-    </div>
-  );
-}
-
 export function About() {
   return (
     <section id="sobre" className="py-24 lg:py-32 relative">
@@ -71,17 +31,13 @@ export function About() {
             Especialista em sites que <span className="text-gradient">trazem clientes</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Sou Wallace, desenvolvedor focado em performance e conversão, baseado em Nova Iguaçu, RJ. Crio sistemas digitais que combinam design premium, velocidade e estratégia — para o seu negócio crescer enquanto você foca no que faz de melhor.
+            Sou Wallace, desenvolvedor focado em desempenho e conversão, baseado em Nova Iguaçu, RJ. Crio sistemas digitais que combinam design de qualidade, velocidade e estratégia — para o seu negócio crescer enquanto você foca no que faz de melhor.
           </p>
           <p className="text-base text-muted-foreground/80 leading-relaxed">
-            Cada projeto é tratado como se fosse meu. Atendimento direto, sem intermediários, sem enrolação — do briefing à entrega.
+            Cada projeto é tratado como se fosse meu. Atendimento direto, sem intermediários, sem enrolação — da conversa inicial à entrega.
           </p>
 
-          <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border">
-            <Counter to={1} suffix="+" label="App lançado" />
-            <Counter to={100} suffix="%" label="Mobile-ready" />
-            <Counter to={3} suffix=" dias" label="Entrega média" />
-          </div>
+
         </div>
       </div>
     </section>

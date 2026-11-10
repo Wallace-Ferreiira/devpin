@@ -1,11 +1,7 @@
-import { Rocket, Globe, Package, Smartphone } from "lucide-react";
+import { Rocket, Globe, Package, Smartphone, Check } from "lucide-react";
+import { services, DELIVERY_PLACEHOLDER } from "@/lib/services";
 
-const services = [
-  { icon: Rocket, title: "Landing Page", desc: "Página de alta conversão para captar clientes pelo WhatsApp todos os dias.", price: "R$ 397" },
-  { icon: Globe, title: "Site Institucional", desc: "Presença digital premium que passa autoridade e fecha mais negócios.", price: "R$ 897" },
-  { icon: Package, title: "Sistema de Gestão", desc: "Controle pedidos, clientes, estoque e rotas em um painel feito sob medida.", price: "R$ 1.497" },
-  { icon: Smartphone, title: "App Web", desc: "Aplicativo rápido que roda no celular sem instalar — pronto pra escalar.", price: "R$ 1.997" },
-];
+const icons = [Rocket, Globe, Package, Smartphone];
 
 export function Services() {
   return (
@@ -17,13 +13,13 @@ export function Services() {
             Soluções que <span className="text-gradient">geram resultado</span>
           </h2>
           <p className="text-muted-foreground mt-4 text-lg">
-            Do design ao deploy: cada projeto pensado para atrair clientes, vender mais e fortalecer sua marca.
+            Da criação à publicação: cada projeto pensado para atrair clientes, vender mais e fortalecer sua marca.
           </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((s, i) => {
-            const Icon = s.icon;
+            const Icon = icons[i] ?? Globe;
             return (
               <div
                 key={s.title}
@@ -40,6 +36,11 @@ export function Services() {
                   <div className="pt-4 border-t border-border">
                     <span className="text-xs text-muted-foreground">A partir de</span>
                     <div className="text-2xl font-bold text-gradient">{s.price}</div>
+                    <h4 className="mt-5 mb-3 text-sm font-semibold">O que está incluso</h4>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      {s.includes.map((item) => <li key={item} className="flex items-start gap-2"><Check className="w-4 h-4 shrink-0 mt-0.5 text-primary" /><span>{item}</span></li>)}
+                    </ul>
+                    <p className="mt-5 text-sm text-muted-foreground">Prazo de entrega: <span className="text-foreground">{DELIVERY_PLACEHOLDER}</span></p>
                   </div>
                 </div>
               </div>
