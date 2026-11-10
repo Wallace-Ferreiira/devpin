@@ -12,7 +12,6 @@ export function About() {
                 "0 0 20px #f59e0b, 0 0 40px #f59e0b80, 0 0 80px #f59e0b40",
             }}
           >
-            {/* REPLACE src with your photo URL */}
             <img
               id="profile-photo"
               src="https://i.imgur.com/gC3RmpE.png"

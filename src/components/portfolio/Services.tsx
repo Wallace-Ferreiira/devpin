@@ -1,5 +1,5 @@
 import { Rocket, Globe, Package, Smartphone, Check } from "lucide-react";
-import { services, DELIVERY_PLACEHOLDER } from "@/lib/services";
+import { services } from "@/lib/services";
 
 const icons = [Rocket, Globe, Package, Smartphone];
 
@@ -40,7 +40,6 @@ export function Services() {
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       {s.includes.map((item) => <li key={item} className="flex items-start gap-2"><Check className="w-4 h-4 shrink-0 mt-0.5 text-primary" /><span>{item}</span></li>)}
                     </ul>
-                    <p className="mt-5 text-sm text-muted-foreground">Prazo de entrega: <span className="text-foreground">{DELIVERY_PLACEHOLDER}</span></p>
                   </div>
                 </div>
               </div>

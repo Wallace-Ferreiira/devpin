@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ExternalLink, ImageIcon, ChevronLeft, ChevronRight, BriefcaseBusiness } from "lucide-react";
+import { ExternalLink, ChevronLeft, ChevronRight, BriefcaseBusiness } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 import { projects } from "@/lib/projects";
@@ -50,7 +50,7 @@ function HoverCarousel({ images, title }: { images: string[]; title: string }) {
         className={`relative block w-full h-auto p-0 aspect-[16/10] rounded-lg overflow-hidden ${hasImages ? "cursor-zoom-in" : ""}`}
         style={{ backgroundColor: "var(--background)", border: "1px solid var(--border)" }}
       >
-        {hasImages ? (
+        {hasImages && (
           <>
             {images.map((src, i) => (
               <img
@@ -78,21 +78,6 @@ function HoverCarousel({ images, title }: { images: string[]; title: string }) {
               </div>
             )}
           </>
-        ) : (
-          <div
-            className="absolute inset-0 grid place-items-center"
-            style={{
-              background:
-                "linear-gradient(110deg, #0a0a0a 30%, #1a1a1a 50%, #0a0a0a 70%)",
-              backgroundSize: "200% 100%",
-              animation: "shimmer 2.5s ease-in-out infinite",
-            }}
-          >
-            <div className="flex flex-col items-center gap-2" style={{ color: "#52525b" }}>
-              <ImageIcon className="w-6 h-6" />
-              <span className="text-xs font-medium">Em breve</span>
-            </div>
-          </div>
         )}
       </Button>
 
@@ -156,12 +141,6 @@ function HoverCarousel({ images, title }: { images: string[]; title: string }) {
 export function Projects() {
   return (
     <section id="projetos" className="py-24 lg:py-32 relative">
-      <style>{`
-        @keyframes shimmer {
-          0% { background-position: 200% 0; }
-          100% { background-position: -200% 0; }
-        }
-      `}</style>
       <div className="container mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-16 reveal">
           <span className="text-sm font-semibold text-primary uppercase tracking-wider">Portfólio</span>

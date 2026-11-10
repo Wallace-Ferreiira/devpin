@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { contactSchema, contactWhatsappUrl, WHATSAPP_NUMBER, WHATSAPP_URL } from "./contact";
 import { projects } from "./projects";
-import { services, DELIVERY_PLACEHOLDER } from "./services";
+import { services } from "./services";
 
 describe("Portfolio rules", () => {
   test("real estate comes first and the barbershop occupies its previous visible position", () => {
@@ -28,9 +28,8 @@ describe("Portfolio rules", () => {
   test("package prices are retained", () => {
     expect(services.map((s) => s.price)).toEqual(["R$ 397", "R$ 897", "R$ 1.497", "R$ 1.997"]);
   });
-  test("each package has three to four inclusions and no invented deadline", () => {
+  test("each package has three to four inclusions", () => {
     for (const service of services) { expect(service.includes.length).toBeGreaterThanOrEqual(3); expect(service.includes.length).toBeLessThanOrEqual(4); }
-    expect(DELIVERY_PLACEHOLDER).toBe("[PRAZO EM DIAS]");
   });
 });
 

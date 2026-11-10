@@ -1,7 +1,7 @@
 import { ArrowRight, MessageCircle, Sparkles, Zap, Smartphone, Shield } from "lucide-react";
+import heroMain from "@/assets/hero-main.jpg";
 import cardLanding from "@/assets/card-landing.jpg";
 import cardSystem from "@/assets/card-system.jpg";
-import cardMobile from "@/assets/card-mobile.jpg";
 import { Particles } from "./Particles";
 
 export function Hero() {
@@ -84,8 +84,8 @@ export function Hero() {
           >
             <div className="absolute inset-0 rounded-3xl ring-1 ring-primary/40 pointer-events-none" />
             <img
-              src="https://i.imgur.com/XUxLo6j.png"
-              alt="Demonstração do site para corretor de imóveis"
+              src={heroMain}
+              alt="Mockup do aplicativo de rotas para entregadores"
               width={1024}
               height={1280}
               className="w-full aspect-[4/5] object-cover object-center block"
@@ -110,14 +110,6 @@ export function Hero() {
             <p className="text-xs text-center mt-2 mb-1 font-medium">Sistema de gestão</p>
           </div>
 
-          {/* Floating Card 3 - right middle */}
-          <div
-            className="absolute top-1/2 -translate-y-1/2 right-2 lg:-right-4 w-32 lg:w-40 glass rounded-2xl p-2 shadow-card hidden sm:block"
-            style={{ animation: "fade-up 0.8s ease-out 1.4s both, float 8s ease-in-out 2.4s infinite" }}
-          >
-            <img src={cardMobile} alt="Mockup app mobile" loading="lazy" width={512} height={768} className="rounded-xl w-full h-auto" />
-            <p className="text-xs text-center mt-2 mb-1 font-medium">Aplicativo para celular</p>
-          </div>
         </div>
       </div>
     </section>

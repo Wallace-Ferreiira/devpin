@@ -4,4 +4,3 @@ export const services = [
   { title: "Sistema de Gestão", desc: "Controle pedidos, clientes e estoque em um painel feito sob medida.", price: "R$ 1.497", includes: ["Painel de gestão", "Cadastros personalizados", "Interface responsiva", "Orientação de uso"] },
   { title: "Aplicativo Web", desc: "Aplicativo rápido que roda no celular sem instalar — pronto para crescer.", price: "R$ 1.997", includes: ["Interface personalizada", "Acesso pelo navegador", "Layout responsivo", "Orientação de uso"] },
 ];
-export const DELIVERY_PLACEHOLDER = "[PRAZO EM DIAS]";

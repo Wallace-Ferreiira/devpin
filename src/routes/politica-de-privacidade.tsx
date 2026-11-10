@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/politica-de-privacidade")({
   head: () => ({ meta: [
     { title: "Política de Privacidade — Axion Tech" },
-    { name: "description", content: "Política de Privacidade da Axion Tech. Texto pendente de revisão." },
+    { name: "description", content: "Política de Privacidade da Axion Tech. Esta página está em revisão." },
     { property: "og:title", content: "Política de Privacidade — Axion Tech" },
-    { property: "og:description", content: "Política de Privacidade da Axion Tech. Texto pendente de revisão." },
+    { property: "og:description", content: "Política de Privacidade da Axion Tech. Esta página está em revisão." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary" },
   ] }),
@@ -21,7 +21,7 @@ function Privacy() {
       <Button asChild variant="outline"><Link to="/"><ArrowLeft />Voltar ao início</Link></Button>
       <p className="text-primary text-sm font-semibold mt-16">AXION TECH</p>
       <h1 className="text-4xl sm:text-5xl font-bold mt-4">Política de Privacidade</h1>
-      <p className="text-muted-foreground mt-8">[TEXTO A SER REVISADO]</p>
+      <p className="text-muted-foreground mt-8">Esta página está em revisão.</p>
     </main>
     <Footer />
   </div>;
